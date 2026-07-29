@@ -19,16 +19,22 @@ type FormData = z.infer<typeof schema>;
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [failed, setFailed] = useState(false);
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
   async function onSubmit(data: FormData) {
-    await fetch("/api/contact", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+    if (!res.ok) {
+      setFailed(true);
+      return;
+    }
+    setFailed(false);
     setSent(true);
     reset();
   }
@@ -54,6 +60,11 @@ export function Contact() {
               </p>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                {failed && (
+                  <p className="text-xs text-red-400">
+                    Something went wrong sending your message — please try again later.
+                  </p>
+                )}
                 <div>
                   <Input placeholder="Your name..." {...register("name")} />
                   {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}

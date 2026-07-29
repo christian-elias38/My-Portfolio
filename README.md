@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment
+
+Copy `.env.example` to `.env` and fill in the values. `ADMIN_USERNAME` and
+`ADMIN_PASSWORD` guard `/admin` and every write endpoint (`POST`/`PATCH` on
+`/api/*`, plus `GET /api/contact`) with HTTP Basic auth. If either is missing,
+those routes reject all requests.
+
 ## Getting Started
 
 First, run the development server:
