@@ -2,11 +2,24 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { sendJson } from "@/lib/api-client";
 import type { Profile } from "@prisma/client";
 
+const fields = [
+  { name: "name", placeholder: "Name" },
+  { name: "headline", placeholder: "Headline" },
+  { name: "bio", placeholder: "Bio", multiline: true },
+  { name: "location", placeholder: "Location" },
+  { name: "github", placeholder: "GitHub URL" },
+  { name: "linkedin", placeholder: "LinkedIn URL" },
+] as const;
+
+type FieldName = (typeof fields)[number]["name"];
+
 export function ProfileForm({ profile }: { profile: Profile | null }) {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<Record<FieldName, string>>({
     name: profile?.name ?? "",
     headline: profile?.headline ?? "",
     bio: profile?.bio ?? "",
@@ -16,29 +29,36 @@ export function ProfileForm({ profile }: { profile: Profile | null }) {
   });
   const [saving, setSaving] = useState(false);
 
+  function update(field: FieldName, value: string) {
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
   async function handleSave() {
     setSaving(true);
-    await fetch("/api/profile", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    await sendJson("/api/profile", form, "PATCH");
     setSaving(false);
   }
 
   return (
     <div className="space-y-4">
-      <Input placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-      <Input placeholder="Headline" value={form.headline} onChange={(e) => setForm({ ...form, headline: e.target.value })} />
-      <textarea
-        placeholder="Bio"
-        value={form.bio}
-        onChange={(e) => setForm({ ...form, bio: e.target.value })}
-        className="w-full rounded-xl border border-border bg-background/50 px-3 py-2 text-sm min-h-[140px]"
-      />
-      <Input placeholder="Location" value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} />
-      <Input placeholder="GitHub URL" value={form.github} onChange={(e) => setForm({ ...form, github: e.target.value })} />
-      <Input placeholder="LinkedIn URL" value={form.linkedin} onChange={(e) => setForm({ ...form, linkedin: e.target.value })} />
+      {fields.map((field) =>
+        "multiline" in field ? (
+          <Textarea
+            key={field.name}
+            placeholder={field.placeholder}
+            value={form[field.name]}
+            onChange={(e) => update(field.name, e.target.value)}
+            className="rounded-xl"
+          />
+        ) : (
+          <Input
+            key={field.name}
+            placeholder={field.placeholder}
+            value={form[field.name]}
+            onChange={(e) => update(field.name, e.target.value)}
+          />
+        )
+      )}
       <Button onClick={handleSave} disabled={saving}>{saving ? "Saving..." : "Save Changes"}</Button>
     </div>
   );

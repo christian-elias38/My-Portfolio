@@ -1,16 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { useWindowEvent } from "@/hooks/useWindowEvent";
 
 export function CursorFollower() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
 
-  useEffect(() => {
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
+  useWindowEvent("mousemove", (e) => setPos({ x: e.clientX, y: e.clientY }));
 
   return (
     <motion.div

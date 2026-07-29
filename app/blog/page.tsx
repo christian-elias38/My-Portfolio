@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { SectionHeading } from "@/components/ui/primitives/SectionHeading";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
+import { formatDate } from "@/lib/format";
 
 export default async function BlogPage() {
   const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } });
@@ -22,7 +23,7 @@ export default async function BlogPage() {
                 <Link href={`/blog/${post.slug}`}>
                   <GlassCard className="hover:border-primary/50">
                     <h3 className="font-bold text-lg text-foreground mb-2">{post.title}</h3>
-                    <p className="text-xs text-muted-foreground">{new Date(post.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-muted-foreground">{formatDate(post.createdAt)}</p>
                   </GlassCard>
                 </Link>
               </FadeIn>

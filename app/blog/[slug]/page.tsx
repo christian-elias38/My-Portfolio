@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
+import { formatDate } from "@/lib/format";
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -14,7 +15,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <Section>
       <Container className="max-w-2xl">
         <h1 className="text-section-title text-foreground mb-4">{post.title}</h1>
-        <p className="text-xs text-muted-foreground mb-8">{new Date(post.createdAt).toLocaleDateString()}</p>
+        <p className="text-xs text-muted-foreground mb-8">{formatDate(post.createdAt)}</p>
         {post.imageUrl && (
           <div className="relative aspect-video rounded-3xl overflow-hidden mb-8">
             <Image src={post.imageUrl} alt={post.title} fill className="object-cover" />

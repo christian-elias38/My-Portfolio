@@ -1,15 +1,11 @@
-import { NextResponse } from 'next/server'
+import type { Prisma } from '@prisma/client'
+import { createCollectionRoute } from '@/lib/api/collection-route'
 import { prisma } from '@/lib/prisma'
 
-export async function POST(req: Request) {
-  const body = await req.json()
-  const message = await prisma.contactMessage.create({ data: body })
-  return NextResponse.json(message)
-}
+const route = createCollectionRoute({
+  list: () => prisma.contactMessage.findMany({ orderBy: { createdAt: 'desc' } }),
+  create: (data: Prisma.ContactMessageCreateInput) => prisma.contactMessage.create({ data }),
+})
 
-export async function GET() {
-  const messages = await prisma.contactMessage.findMany({
-    orderBy: { createdAt: 'desc' },
-  })
-  return NextResponse.json(messages)
-}
+export const GET = route.GET
+export const POST = route.POST

@@ -1,15 +1,11 @@
-import { NextResponse } from 'next/server'
+import type { Prisma } from '@prisma/client'
+import { createCollectionRoute } from '@/lib/api/collection-route'
 import { prisma } from '@/lib/prisma'
 
-export async function GET() {
-  const education = await prisma.education.findMany({
-    orderBy: { startYear: 'desc' },
-  })
-  return NextResponse.json(education)
-}
+const route = createCollectionRoute({
+  list: () => prisma.education.findMany({ orderBy: { startYear: 'desc' } }),
+  create: (data: Prisma.EducationCreateInput) => prisma.education.create({ data }),
+})
 
-export async function POST(req: Request) {
-  const body = await req.json()
-  const education = await prisma.education.create({ data: body })
-  return NextResponse.json(education)
-}
+export const GET = route.GET
+export const POST = route.POST
