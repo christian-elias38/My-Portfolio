@@ -1,15 +1,11 @@
-import { NextResponse } from 'next/server'
+import type { Prisma } from '@prisma/client'
+import { createCollectionRoute } from '@/lib/api/collection-route'
 import { prisma } from '@/lib/prisma'
 
-export async function GET() {
-  const skills = await prisma.skill.findMany({
-    orderBy: { category: 'asc' },
-  })
-  return NextResponse.json(skills)
-}
+const route = createCollectionRoute({
+  list: () => prisma.skill.findMany({ orderBy: { category: 'asc' } }),
+  create: (data: Prisma.SkillCreateInput) => prisma.skill.create({ data }),
+})
 
-export async function POST(req: Request) {
-  const body = await req.json()
-  const skill = await prisma.skill.create({ data: body })
-  return NextResponse.json(skill)
-}
+export const GET = route.GET
+export const POST = route.POST

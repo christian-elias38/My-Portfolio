@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import type { Experience as ExperienceModel } from "@prisma/client";
+import { Panel } from "@/components/ui/primitives/Panel";
+import { formatYearRange } from "@/lib/format";
 
 export function ExperienceTimeline({ experience }: { experience: ExperienceModel[] }) {
   return (
@@ -18,14 +20,14 @@ export function ExperienceTimeline({ experience }: { experience: ExperienceModel
             className="relative"
           >
             <span className="absolute -left-[38px] top-1.5 w-3 h-3 rounded-full bg-accent ring-4 ring-accent/20" />
-            <div className="bg-card/50 border border-border rounded-2xl p-6 hover:border-accent/40 transition-colors">
+            <Panel className="hover:border-accent/40 transition-colors">
               <p className="text-xs text-accent font-semibold mb-1">
-                {new Date(exp.startDate).getFullYear()} — {exp.endDate ? new Date(exp.endDate).getFullYear() : "Present"}
+                {formatYearRange(exp.startDate, exp.endDate)}
               </p>
               <h3 className="font-bold mb-1">{exp.role}</h3>
               <p className="text-sm text-muted-foreground mb-3">{exp.company}</p>
               <p className="text-sm text-foreground/70 leading-relaxed">{exp.description}</p>
-            </div>
+            </Panel>
           </motion.div>
         ))}
       </div>

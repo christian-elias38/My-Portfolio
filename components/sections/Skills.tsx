@@ -1,6 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SkillsGrid } from "@/components/sections/SkillsGrid";
+import { Section } from "@/components/ui/primitives/Section";
+import { Container } from "@/components/ui/primitives/Container";
+import { SectionHeading } from "@/components/ui/primitives/SectionHeading";
 import type { Skill } from "@prisma/client";
 
 export async function Skills() {
@@ -13,11 +16,13 @@ export async function Skills() {
   }, {});
 
   return (
-    <section id="skills" className="max-w-3xl mx-auto px-6 py-24">
-      <FadeIn>
-        <h2 className="text-2xl font-semibold mb-8">Skills</h2>
-      </FadeIn>
-      <SkillsGrid grouped={grouped} />
-    </section>
+    <Section id="skills" className="py-24">
+      <Container className="max-w-3xl">
+        <FadeIn>
+          <SectionHeading title="Skills" size="sm" className="mb-8" />
+        </FadeIn>
+        <SkillsGrid grouped={grouped} />
+      </Container>
+    </Section>
   );
 }

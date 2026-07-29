@@ -14,6 +14,13 @@ import { Hero3DWrapper } from "@/components/three/Hero3DWrapper";
 import { Container } from "@/components/ui/primitives/Container";
 import { Glow } from "@/components/ui/primitives/Glow";
 import { BlurCircle } from "@/components/ui/primitives/BlurCircle";
+import { getProfileLinks, type ProfileLinkKey } from "@/lib/profile-links";
+
+const socialIcons: Record<ProfileLinkKey, React.ReactNode> = {
+  github: <SiGithub size={20} />,
+  linkedin: <LinkedinIcon size={20} />,
+  email: <Mail className="w-5 h-5" />,
+};
 
 export async function Hero() {
   const profile = await prisma.profile.findFirst();
@@ -74,9 +81,13 @@ export async function Hero() {
             </FadeIn>
             <FadeIn delay={0.6}>
               <div className="flex gap-6 text-muted-foreground">
-                {profile?.github && <Magnetic><a href={profile.github} target="_blank"><SiGithub size={20} /></a></Magnetic>}
-                {profile?.linkedin && <Magnetic><a href={profile.linkedin} target="_blank"><LinkedinIcon size={20} /></a></Magnetic>}
-                {profile?.email && <Magnetic><a href={`mailto:${profile.email}`}><Mail className="w-5 h-5" /></a></Magnetic>}
+                {getProfileLinks(profile).map((link) => (
+                  <Magnetic key={link.key}>
+                    <a href={link.href} aria-label={link.label} target={link.external ? "_blank" : undefined}>
+                      {socialIcons[link.key]}
+                    </a>
+                  </Magnetic>
+                ))}
               </div>
             </FadeIn>
           </div>

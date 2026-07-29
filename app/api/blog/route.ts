@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
+import { createDisabledRoute } from '@/lib/api/collection-route'
 
-export async function GET() {
-  return NextResponse.json({ message: 'Blog API is not enabled.' }, { status: 404 });
-}
+const route = createDisabledRoute('Blog')
+
+export const GET = route.GET
