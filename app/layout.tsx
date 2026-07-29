@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { CursorFollower } from "@/components/motion/CursorFollower";
+import { Toaster } from "@/components/ui/sonner";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Navbar />
             <main className="pt-20">{children}</main>
             <Footer />
+            <Toaster />
           </SmoothScroll>
         </ThemeProvider>
       </body>

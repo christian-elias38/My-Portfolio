@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import type { Profile } from "@prisma/client";
 
 export function ProfileForm({ profile }: { profile: Profile | null }) {
@@ -18,12 +19,25 @@ export function ProfileForm({ profile }: { profile: Profile | null }) {
 
   async function handleSave() {
     setSaving(true);
-    await fetch("/api/profile", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-    setSaving(false);
+    try {
+      const res = await fetch("/api/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? `Request failed with status ${res.status}`);
+      }
+
+      toast.success("Profile saved");
+    } catch (error) {
+      console.error("Failed to save profile", error);
+      toast.error(error instanceof Error ? error.message : "Failed to save profile");
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (

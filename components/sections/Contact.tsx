@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Mail, MapPin, CircleDot } from "lucide-react";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z.string().min(2, "Name is too short"),
@@ -24,13 +25,28 @@ export function Contact() {
   });
 
   async function onSubmit(data: FormData) {
-    await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    setSent(true);
-    reset();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? `Request failed with status ${res.status}`);
+      }
+
+      setSent(true);
+      reset();
+    } catch (error) {
+      console.error("Failed to send contact message", error);
+      toast.error(
+        error instanceof Error && error.message
+          ? `Message not sent: ${error.message}`
+          : "Message not sent — please try again.",
+      );
+    }
   }
 
   return (
