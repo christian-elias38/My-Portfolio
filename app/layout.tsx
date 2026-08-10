@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,8 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { CursorFollower } from "@/components/motion/CursorFollower";
 import { Hero3DWrapper } from "@/components/three/Hero3DWrapper";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Christian Elias | Software Engineer",
@@ -18,15 +15,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <SmoothScroll>
             <CursorFollower />
-            <div className="fixed inset-0 -z-20 opacity-40 pointer-events-none">
+            <div className="noise-overlay" aria-hidden="true" />
+            <div className="fixed inset-0 -z-40 pointer-events-none">
               <Hero3DWrapper />
             </div>
             <Navbar />
-            <main className="pt-20">{children}</main>
+            <main className="pt-20 relative z-10">{children}</main>
             <Footer />
           </SmoothScroll>
         </ThemeProvider>
