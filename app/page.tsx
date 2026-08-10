@@ -7,6 +7,8 @@ import { Education } from "@/components/sections/Education";
 import { Certificates } from "@/components/sections/Certificates";
 import { Contact } from "@/components/sections/Contact";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <>
