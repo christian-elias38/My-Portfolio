@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface Particle {
   id: number;
@@ -20,8 +20,6 @@ const COLORS = [
 ];
 
 export function ParticleField({ count = 30 }: { count?: number }) {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
   const generateParticles = useCallback(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -33,9 +31,7 @@ export function ParticleField({ count = 30 }: { count?: number }) {
     }));
   }, [count]);
 
-  useEffect(() => {
-    setParticles(generateParticles());
-  }, [generateParticles]);
+  const [particles] = useState<Particle[]>(generateParticles);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
