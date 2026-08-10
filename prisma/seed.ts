@@ -96,29 +96,61 @@ await prisma.experience.create({
       featured: true,
     },
     {
-      title: 'Campus Collaboration Platform',
+      title: 'Student Registration Platform',
       description:
-        'A collaborative platform that helps university students connect through study groups, skill sharing, and academic collaboration. Developed using Flutter with modern state management and REST API integration.',
-      technologies: ['Flutter', 'Dart', 'REST API'],
-      githubUrl: 'https://github.com/YordanosBisrat/campus-collaboration-platform',
-      featured: false,
-    },
-    {
-      title: 'Student Registration System',
-      description:
-        'A student management system with CRUD functionality allowing administrators to register, edit, search, and manage student records using a modern full-stack architecture.',
+        'A full-stack Student Registration System built with React, Node.js, Express, and SQLite. Provides CRUD operations for managing student records with a clean, responsive interface.',
       technologies: ['React', 'Node.js', 'Express', 'SQLite'],
       githubUrl: 'https://github.com/chr1133/student-registration-platform',
       imageUrl: 'https://res.cloudinary.com/p3v67tvk/image/upload/v1783655960/photo_2026-07-10_06-47-42_sd7ac0.jpg',
+      featured: true,
+    },
+    {
+      title: 'Fitness Challenge App',
+      description:
+        'A Flutter application that allows users to create and track fitness challenges. Users can add workout challenges, monitor progress, update challenge status, and delete completed or unwanted challenges.',
+      technologies: ['Flutter', 'Dart'],
+      githubUrl: 'https://github.com/chr1133/Fitness-Challenge-App',
       featured: false,
     },
     {
-      title: 'Gojo Real Estate',
+      title: 'Calculator Project',
       description:
-        'A responsive real estate website featuring modern UI, property listings, and clean user experience.',
-      technologies: ['React', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/YordanosBisrat/Real-estate-website',
+        'A clean, functional calculator application built with HTML, CSS, and JavaScript. Demonstrates DOM manipulation, event handling, and responsive UI design.',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      githubUrl: 'https://github.com/chr1133/Calculator-Project',
       imageUrl: 'https://res.cloudinary.com/p3v67tvk/image/upload/v1783655960/photo_2026-07-10_06-38-42_el1h8f.jpg',
+      featured: false,
+    },
+    {
+      title: 'Car Maintenance Tracker',
+      description:
+        'A cross-platform mobile app for tracking vehicle maintenance schedules, service records, and reminders. Built with Flutter for a smooth, native-like experience.',
+      technologies: ['Flutter', 'Dart'],
+      githubUrl: 'https://github.com/chr1133/Car-MaIntenance-Tracker-',
+      featured: false,
+    },
+    {
+      title: 'Maze Project',
+      description:
+        'A Python-based maze generation and solving project demonstrating algorithmic problem solving, pathfinding logic, and interactive visualization techniques.',
+      technologies: ['Python'],
+      githubUrl: 'https://github.com/chr1133/maze_project',
+      featured: false,
+    },
+    {
+      title: 'C++ Academic Project',
+      description:
+        'University coursework project implementing core programming concepts in C++, including data structures, algorithms, and systems-level programming patterns.',
+      technologies: ['C++'],
+      githubUrl: 'https://github.com/chr1133/Christian-Elias-Ugr-8399-16',
+      featured: false,
+    },
+    {
+      title: 'MiniGit',
+      description:
+        'A lightweight Git-like version control system implemented in C++. Explores core version control concepts including commits, branching, and repository management.',
+      technologies: ['C++'],
+      githubUrl: 'https://github.com/chr1133/MiniGit1',
       featured: false,
     },
   ],
