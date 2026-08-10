@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { FooterIcon } from "@/components/footer/FooterIcon";
 import { Container } from "@/components/ui/primitives/Container";
 
+
 export async function Footer() {
   const profile = await prisma.profile.findFirst();
 
