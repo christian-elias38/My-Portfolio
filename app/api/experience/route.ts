@@ -2,10 +2,14 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
 export async function GET() {
-  const experience = await prisma.experience.findMany({
-    orderBy: { startDate: 'desc' },
-  })
-  return NextResponse.json(experience)
+  try {
+    const experience = await prisma.experience.findMany({
+      orderBy: { startDate: 'desc' },
+    })
+    return NextResponse.json(experience)
+  } catch {
+    return NextResponse.json([])
+  }
 }
 
 export async function POST(req: Request) {
