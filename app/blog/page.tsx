@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import type { BlogPost } from "@prisma/client";
 import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Section } from "@/components/ui/primitives/Section";
@@ -6,8 +7,13 @@ import { Container } from "@/components/ui/primitives/Container";
 import { SectionHeading } from "@/components/ui/primitives/SectionHeading";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function BlogPage() {
-  const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } });
+  let posts: BlogPost[] = [];
+  try {
+    posts = (await prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } })) as BlogPost[];
+  } catch {}
 
   return (
     <Section>
