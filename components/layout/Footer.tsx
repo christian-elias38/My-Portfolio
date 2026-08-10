@@ -1,10 +1,24 @@
-import { prisma } from "@/lib/prisma";
+"use client";
+
+import { useEffect, useState } from "react";
 import { FooterIcon } from "@/components/footer/FooterIcon";
 import { Container } from "@/components/ui/primitives/Container";
 
+type Profile = {
+  name?: string;
+  github?: string;
+  linkedin?: string;
+};
 
-export async function Footer() {
-  const profile = await prisma.profile.findFirst();
+export function Footer() {
+  const [profile, setProfile] = useState<Profile | null>(null);
+
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((r) => r.json())
+      .then(setProfile)
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className="bg-card/30 border-t border-border mt-20">
