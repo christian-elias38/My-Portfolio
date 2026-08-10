@@ -1,9 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
+import type { Experience as ExperienceModel } from "@prisma/client";
 
 export async function Experience() {
-  const experience = await prisma.experience.findMany({ orderBy: { startDate: "desc" } });
+  let experience: ExperienceModel[] = [];
+  try {
+    experience = await prisma.experience.findMany({ orderBy: { startDate: "desc" } });
+  } catch {}
 
   if (experience.length === 0) return null;
 
