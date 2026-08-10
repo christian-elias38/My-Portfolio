@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
+import type { Profile } from "@prisma/client";
 import { Code2, Rocket, Users, Lightbulb } from "lucide-react";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
@@ -14,7 +15,10 @@ const highlights = [
 ];
 
 export async function About() {
-  const profile = await prisma.profile.findFirst();
+  let profile: Profile | null = null;
+  try {
+    profile = await prisma.profile.findFirst();
+  } catch {}
 
   return (
     <Section id="about">
