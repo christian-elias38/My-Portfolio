@@ -3,10 +3,16 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
+import type { BlogPost } from "@prisma/client";
+
+export const dynamic = "force-dynamic";
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await prisma.blogPost.findUnique({ where: { slug } });
+  let post: BlogPost | null = null;
+  try {
+    post = await prisma.blogPost.findUnique({ where: { slug } });
+  } catch {}
 
   if (!post) notFound();
 
