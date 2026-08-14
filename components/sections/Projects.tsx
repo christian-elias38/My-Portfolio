@@ -23,23 +23,31 @@ export async function Projects() {
         {projects.length === 0 ? (
           <p className="text-muted-foreground text-sm">No projects added yet.</p>
         ) : (
-          <div className="space-y-10">
+          <div className="space-y-16">
             {featured.length > 0 && (
-              <div className="grid md:grid-cols-2 gap-8">
-                {featured.map((project, i) => (
-                  <FadeIn key={project.id} delay={i * 0.1}>
-                    <ProjectCard project={project} />
-                  </FadeIn>
-                ))}
+              <div>
+                <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-5">Featured</p>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {featured.map((project, i) => (
+                    <FadeIn key={project.id} delay={i * 0.1}>
+                      <ProjectCard project={project} featured />
+                    </FadeIn>
+                  ))}
+                </div>
               </div>
             )}
             {rest.length > 0 && (
-              <div className="grid md:grid-cols-2 gap-8">
-                {rest.map((project, i) => (
-                  <FadeIn key={project.id} delay={i * 0.05}>
-                    <ProjectCard project={project} />
-                  </FadeIn>
-                ))}
+              <div>
+                {featured.length > 0 && (
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-5">More Projects</p>
+                )}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {rest.map((project, i) => (
+                    <FadeIn key={project.id} delay={i * 0.05}>
+                      <ProjectCard project={project} />
+                    </FadeIn>
+                  ))}
+                </div>
               </div>
             )}
           </div>
