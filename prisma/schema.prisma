@@ -32,6 +32,8 @@ model Project {
   liveUrl       String?
   featured      Boolean  @default(false)
   technologies  String[]
+  category      String?
+  year          Int?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -44,12 +46,14 @@ model Skill {
 }
 
 model Experience {
-  id          String    @id @default(cuid())
-  company     String
-  role        String
-  description String
-  startDate   DateTime
-  endDate     DateTime?
+  id            String    @id @default(cuid())
+  company       String
+  role          String
+  description   String
+  technologies  String[]  @default([])
+  achievements  String[]  @default([])
+  startDate     DateTime
+  endDate       DateTime?
 }
 
 model Education {
@@ -76,8 +80,10 @@ model BlogPost {
   id        String   @id @default(cuid())
   title     String
   slug      String   @unique
+  excerpt   String?
   content   String
   imageUrl  String?
+  tags      String[] @default([])
   createdAt DateTime @default(now())
 }
 
