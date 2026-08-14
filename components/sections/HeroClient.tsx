@@ -13,5 +13,5 @@ export function HeroClient({ typewriter, texts }: HeroClientProps) {
     return <TypeWriter texts={texts} />;
   }
 
-  return <ParticleField count={25} />;
+  return <ParticleField />;
 }
