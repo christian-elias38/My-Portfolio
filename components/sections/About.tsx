@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { StatCounter } from "@/components/motion/StatCounter";
 import type { Profile } from "@prisma/client";
 import { Code2, Rocket, Users, Lightbulb } from "lucide-react";
 import { Section } from "@/components/ui/primitives/Section";
@@ -16,9 +17,32 @@ const highlights = [
 
 export async function About() {
   let profile: Profile | null = null;
+  let projectCount = 0;
+  let skillCount = 0;
+  let categoryCount = 0;
+  let yearsCoding = 0;
+
   try {
-    profile = await prisma.profile.findFirst();
+    const [profileResult, projectCountResult, skills, earliestExperience] = await Promise.all([
+      prisma.profile.findFirst(),
+      prisma.project.count(),
+      prisma.skill.findMany({ select: { category: true } }),
+      prisma.experience.findFirst({ orderBy: { startDate: "asc" } }),
+    ]);
+    profile = profileResult;
+    projectCount = projectCountResult;
+    skillCount = skills.length;
+    categoryCount = new Set(skills.map((s) => s.category)).size;
+    const startYear = earliestExperience?.startDate.getFullYear();
+    yearsCoding = startYear ? Math.max(1, new Date().getFullYear() - startYear) : 0;
   } catch {}
+
+  const stats = [
+    { label: "Years Coding", value: yearsCoding, suffix: "+" },
+    { label: "Projects Shipped", value: projectCount, suffix: "" },
+    { label: "Technologies", value: skillCount, suffix: "" },
+    { label: "Skill Categories", value: categoryCount, suffix: "" },
+  ];
 
   return (
     <Section id="about">
@@ -26,7 +50,7 @@ export async function About() {
         <FadeIn>
           <SectionHeading eyebrow="About Me" title="Building thoughtful products, one feature at a time." />
         </FadeIn>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-12 items-start mb-12">
           <FadeIn delay={0.1}>
             <p className="text-foreground/70 leading-relaxed whitespace-pre-line mb-6">{profile?.bio}</p>
             {profile?.location && <p className="text-sm text-muted-foreground">📍 {profile.location}</p>}
@@ -42,6 +66,18 @@ export async function About() {
               </FadeIn>
             ))}
           </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((stat, i) => (
+            <FadeIn key={stat.label} delay={0.1 + i * 0.08}>
+              <GlassCard className="p-6 text-center">
+                <p className="text-3xl md:text-4xl font-bold text-accent tabular-nums">
+                  <StatCounter value={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="text-xs text-foreground/60 mt-2 uppercase tracking-wider">{stat.label}</p>
+              </GlassCard>
+            </FadeIn>
+          ))}
         </div>
       </Container>
     </Section>
