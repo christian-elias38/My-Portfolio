@@ -10,7 +10,6 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { LanguageSlider } from "@/components/motion/LanguageSlider";
-import { Hero3DWrapper } from "@/components/three/Hero3DWrapper";
 import { Container } from "@/components/ui/primitives/Container";
 import { Glow } from "@/components/ui/primitives/Glow";
 import { BlurCircle } from "@/components/ui/primitives/BlurCircle";
@@ -24,19 +23,15 @@ export async function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-50">
-        <Hero3DWrapper />
-      </div>
-      <div className="absolute inset-0 -z-20 bg-background" />
-      <Glow className="w-72 h-72 top-1/4 left-1/4" />
-      <BlurCircle size={400} className="bottom-0 right-0" />
+      <Glow className="w-72 h-72 top-8 left-8" />
+      <BlurCircle size={360} className="bottom-0 right-0 opacity-70" />
 
       <Container>
         <div className="grid md:grid-cols-[280px_1fr] gap-16 items-center w-full">
           <FadeIn direction="right">
             <div className="relative w-40 h-40 md:w-56 md:h-56">
               {profile?.profileImage ? (
-                <div className="relative w-full h-full rounded-full overflow-hidden ring-4 ring-primary/40 shadow-lg">
+                <div className="border-gradient-glow border-gradient-glow-active relative w-full h-full rounded-full overflow-hidden ring-4 ring-primary/40 shadow-lg">
                   <Image src={profile.profileImage} alt={profile.name} fill className="object-cover" />
                 </div>
               ) : (
@@ -49,7 +44,13 @@ export async function Hero() {
 
           <div className="text-left">
             <FadeIn>
-              <p className="text-accent text-xs uppercase tracking-[0.2em] font-bold mb-4">Software Engineer</p>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-accent text-xs uppercase tracking-[0.2em] font-bold mb-4">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+                </span>
+                Software Engineer
+              </span>
             </FadeIn>
             <TextReveal
               text={profile?.name ?? "Christian Elias"}
@@ -68,12 +69,12 @@ export async function Hero() {
             <FadeIn delay={0.4}>
               <div className="flex flex-wrap gap-4 mb-10">
                 <Magnetic>
-                  <Link href="#projects" className={cn(buttonVariants({ size: "lg" }), "rounded-full shadow-lg hover:scale-105 transition-transform duration-300")}>
+                  <Link href="#projects" className={cn(buttonVariants({ variant: "gradient", size: "xl" }), "hover:scale-[1.03] transition-transform duration-300")}>
                     View Projects
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="#contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full")}>
+                  <Link href="#contact" className={cn(buttonVariants({ variant: "outline", size: "xl" }), "border-gradient-glow hover:border-transparent")}>
                     Contact Me
                   </Link>
                 </Magnetic>
