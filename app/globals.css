@@ -50,50 +50,50 @@
 }
 
 :root {
-  --background: 356 45% 7%;          /* #1a0a0b */
-  --foreground: 28 45% 92%;          /* #f4eae1 */
-  --card: 354 30% 15%;               /* #321b1d */
-  --card-foreground: 28 45% 92%;
-  --popover: 354 30% 15%;
-  --popover-foreground: 28 45% 92%;
-  --primary: 7 28% 45%;              /* #935a52 */
-  --primary-foreground: 30 40% 95%;  /* #f9f0e9 */
-  --secondary: 20 12% 40%;           /* #72625a */
-  --secondary-foreground: 28 45% 92%;
-  --accent: 27 80% 75%;              /* #f2ba8c */
-  --accent-foreground: 356 55% 8%;
-  --muted: 20 10% 22%;               /* #332b27 */
-  --muted-foreground: 30 20% 68%;    /* #b6ada4 */
-  --border: 20 22% 32%;              /* #644c40 */
-  --input: 20 22% 32%;
-  --ring: 7 35% 55%;
-  --destructive: 0 62% 45%;
-  --destructive-foreground: 28 45% 92%;
+  --background: 326 32% 8%;          /* #1c1219 deep plum */
+  --foreground: 340 45% 96%;         /* #fbf1f4 soft blush white */
+  --card: 328 26% 14%;               /* #2b1c25 dark mauve */
+  --card-foreground: 340 45% 96%;
+  --popover: 328 26% 14%;
+  --popover-foreground: 340 45% 96%;
+  --primary: 341 55% 68%;            /* #dd7fa0 dusty rose */
+  --primary-foreground: 340 45% 98%;
+  --secondary: 320 14% 42%;          /* muted mauve */
+  --secondary-foreground: 340 45% 96%;
+  --accent: 345 90% 86%;             /* #fbd0dc soft blush pink */
+  --accent-foreground: 330 55% 14%;
+  --muted: 325 16% 20%;
+  --muted-foreground: 335 22% 74%;
+  --border: 325 20% 26%;
+  --input: 325 20% 26%;
+  --ring: 341 55% 68%;
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 340 45% 96%;
   --radius: 1.75rem;
   --cursor-x: 50%;
   --cursor-y: 40%;
 }
 
 .dark {
-  --background: 356 45% 7%;
-  --foreground: 28 45% 92%;
-  --card: 354 30% 15%;
-  --card-foreground: 28 45% 92%;
-  --popover: 354 30% 15%;
-  --popover-foreground: 28 45% 92%;
-  --primary: 7 28% 45%;
-  --primary-foreground: 30 40% 95%;
-  --secondary: 20 12% 40%;
-  --secondary-foreground: 28 45% 92%;
-  --accent: 27 80% 75%;
-  --accent-foreground: 356 55% 8%;
-  --muted: 20 10% 22%;
-  --muted-foreground: 30 20% 68%;
-  --border: 20 22% 32%;
-  --input: 20 22% 32%;
-  --ring: 7 35% 55%;
-  --destructive: 0 62% 45%;
-  --destructive-foreground: 28 45% 92%;
+  --background: 326 32% 8%;
+  --foreground: 340 45% 96%;
+  --card: 328 26% 14%;
+  --card-foreground: 340 45% 96%;
+  --popover: 328 26% 14%;
+  --popover-foreground: 340 45% 96%;
+  --primary: 341 55% 68%;
+  --primary-foreground: 340 45% 98%;
+  --secondary: 320 14% 42%;
+  --secondary-foreground: 340 45% 96%;
+  --accent: 345 90% 86%;
+  --accent-foreground: 330 55% 14%;
+  --muted: 325 16% 20%;
+  --muted-foreground: 335 22% 74%;
+  --border: 325 20% 26%;
+  --input: 325 20% 26%;
+  --ring: 341 55% 68%;
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 340 45% 96%;
   --radius: 1.75rem;
 }
 
@@ -109,12 +109,12 @@
   }
 }
 
-/* Signature warm gradient — anchored to the brand palette (deep burgundy → soft peach) */
+/* Signature pastel gradient — anchored to the brand palette (deep plum → blush pink) */
 :root {
-  --gradient-deep: #59171b;
-  --gradient-warm: #935a52;
-  --gradient-soft: #f2ba8c;
-  --gradient-cream: #fed7b8;
+  --gradient-deep: #4a1a42;
+  --gradient-warm: #b25c85;
+  --gradient-soft: #f2a6c2;
+  --gradient-cream: #fde2ec;
 }
 
 .bg-ambient {
@@ -122,7 +122,7 @@
     radial-gradient(55% 45% at var(--cursor-x) var(--cursor-y), color-mix(in oklab, var(--gradient-cream) 16%, transparent), transparent 70%),
     radial-gradient(90% 70% at 15% 0%, color-mix(in oklab, var(--gradient-soft) 10%, transparent), transparent 60%),
     radial-gradient(120% 90% at 85% 100%, color-mix(in oklab, var(--gradient-deep) 40%, transparent), transparent 65%),
-    hsl(356 45% 7%);
+    hsl(326 32% 8%);
 }
 
 /* Large, slow-drifting mesh used behind hero-adjacent sections for depth.
