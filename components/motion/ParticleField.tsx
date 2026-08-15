@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { usePointer } from "@/hooks/usePointer";
 import { useMotionCapability } from "@/hooks/useMotionCapability";
+import { mulberry32 } from "@/lib/utils";
 
 interface Particle {
   id: number;
@@ -15,26 +16,15 @@ interface Particle {
 }
 
 const COLORS = [
-  "rgba(242, 186, 140, 0.35)",
-  "rgba(147, 90, 82, 0.3)",
-  "rgba(244, 234, 225, 0.25)",
-  "rgba(182, 173, 164, 0.2)",
-  "rgba(89, 23, 27, 0.25)",
+  "rgba(253, 226, 236, 0.35)",
+  "rgba(242, 166, 194, 0.3)",
+  "rgba(251, 240, 244, 0.25)",
+  "rgba(178, 92, 133, 0.22)",
+  "rgba(74, 26, 66, 0.25)",
 ];
 
 const REPEL_RADIUS = 160;
 const REPEL_STRENGTH = 8;
-
-// Deterministic PRNG (mulberry32) so server and client render identical
-// particle positions from the same seed — avoids a Math.random() hydration mismatch.
-function mulberry32(seed: number) {
-  return function () {
-    seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 function generateParticles(count: number): Particle[] {
   const rand = mulberry32(42);
