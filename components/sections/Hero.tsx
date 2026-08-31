@@ -21,30 +21,36 @@ export async function Hero() {
     profile = await prisma.profile.findFirst();
   } catch {}
 
+  const profileSrc = profile?.profileImage || "/profile.jpg";
+  const name = profile?.name || "Christian Elias";
+
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <Glow className="w-72 h-72 top-8 left-8" />
-      <BlurCircle size={360} className="bottom-0 right-0 opacity-70" />
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden py-12">
+      <Glow className="w-96 h-96 -top-12 -left-12 opacity-80" />
+      <BlurCircle size={400} className="bottom-0 right-0 opacity-60" />
 
       <Container>
-        <div className="grid md:grid-cols-[280px_1fr] gap-16 items-center w-full">
+        <div className="grid md:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-center w-full">
           <FadeIn direction="right">
-            <div className="relative w-40 h-40 md:w-56 md:h-56">
-              {profile?.profileImage ? (
-                <div className="border-gradient-glow border-gradient-glow-active relative w-full h-full rounded-full overflow-hidden ring-4 ring-primary/40 shadow-lg">
-                  <Image src={profile.profileImage} alt={profile.name} fill className="object-cover" />
+            <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 mx-auto md:mx-0">
+              <div className="p-1.5 rounded-[2.4rem] bg-gradient-to-br from-pink-400/70 via-purple-400/50 to-rose-300/70 shadow-[0_0_50px_rgba(225,115,155,0.4)] relative w-full h-full">
+                <div className="relative w-full h-full rounded-[2.1rem] overflow-hidden bg-card border border-white/10">
+                  <Image
+                    src={profileSrc}
+                    alt={name}
+                    fill
+                    priority
+                    sizes="(min-width: 768px) 300px, 240px"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
                 </div>
-              ) : (
-                <div className="w-full h-full rounded-full border-2 border-dashed border-muted-foreground/40 flex items-center justify-center text-xs text-muted-foreground text-center px-4">
-                  Add your photo via admin dashboard
-                </div>
-              )}
+              </div>
             </div>
           </FadeIn>
 
           <div className="text-left">
             <FadeIn>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-accent text-xs uppercase tracking-[0.2em] font-bold mb-4">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 text-accent text-xs uppercase tracking-[0.2em] font-extrabold mb-4 shadow-md opacity-100">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
@@ -114,16 +120,16 @@ export async function Hero() {
             </FadeIn>
             <FadeIn delay={0.6}>
               <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 opacity-100 shadow-md">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                   </span>
                   Open to opportunities
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 opacity-100 shadow-md">
                   Languages I code in:
-                  <span className="text-accent font-semibold"><LanguageSlider /></span>
+                  <span className="text-accent font-bold"><LanguageSlider /></span>
                 </span>
               </div>
             </FadeIn>
