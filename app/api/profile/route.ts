@@ -1,12 +1,23 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+const defaultProfile = {
+  name: "Christian Elias",
+  headline: "Software Engineering Student | Full-Stack Developer | AI Enthusiast",
+  email: "christianelias102@gmail.com",
+  bio: "I'm Christian Elias, a Software Engineering student at Addis Ababa University with a passion for building modern, scalable, and user-friendly web applications.",
+  location: "Addis Ababa, Ethiopia",
+  github: "https://github.com/christian-elias38",
+  linkedin: "https://www.linkedin.com/in/christiane-006073382/",
+  profileImage: "/profile.jpg",
+};
+
 export async function GET() {
   try {
     const profile = await prisma.profile.findFirst();
-    return NextResponse.json(profile);
+    return NextResponse.json(profile || defaultProfile);
   } catch {
-    return NextResponse.json(null, { status: 200 });
+    return NextResponse.json(defaultProfile, { status: 200 });
   }
 }
 
