@@ -23,6 +23,9 @@ export async function Hero() {
 
   const profileSrc = profile?.profileImage || "/profile.jpg";
   const name = profile?.name || "Christian Elias";
+  const github = profile?.github || "https://github.com/christian-elias38";
+  const linkedin = profile?.linkedin || "https://www.linkedin.com/in/christiane-006073382/";
+  const email = profile?.email || "christianelias102@gmail.com";
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden py-12">
@@ -88,23 +91,23 @@ export async function Hero() {
             </FadeIn>
             <FadeIn delay={0.5}>
               <div className="flex items-center gap-6 text-muted-foreground mb-10">
-                {profile?.github && (
+                {github && (
                   <Magnetic>
-                    <a href={profile.github} target="_blank" aria-label="GitHub">
+                    <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                       <SiGithub size={20} />
                     </a>
                   </Magnetic>
                 )}
-                {profile?.linkedin && (
+                {linkedin && (
                   <Magnetic>
-                    <a href={profile.linkedin} target="_blank" aria-label="LinkedIn">
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                       <LinkedinIcon size={20} />
                     </a>
                   </Magnetic>
                 )}
-                {profile?.email && (
+                {email && (
                   <Magnetic>
-                    <a href={`mailto:${profile.email}`} aria-label="Email">
+                    <a href={`mailto:${email}`} aria-label="Email">
                       <Mail className="w-5 h-5" />
                     </a>
                   </Magnetic>
