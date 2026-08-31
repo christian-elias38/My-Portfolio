@@ -34,14 +34,16 @@ export async function About() {
     skillCount = skills.length;
     categoryCount = new Set(skills.map((s) => s.category)).size;
     const startYear = earliestExperience?.startDate.getFullYear();
-    yearsCoding = startYear ? Math.max(1, new Date().getFullYear() - startYear) : 0;
-  } catch {}
+    yearsCoding = startYear ? Math.max(2, new Date().getFullYear() - startYear) : 2;
+  } catch {
+    yearsCoding = 2;
+  }
 
   const stats = [
-    { label: "Years Coding", value: yearsCoding, suffix: "+" },
-    { label: "Projects Shipped", value: projectCount, suffix: "" },
-    { label: "Technologies", value: skillCount, suffix: "" },
-    { label: "Skill Categories", value: categoryCount, suffix: "" },
+    { label: "Years Coding", value: yearsCoding || 2, suffix: "+" },
+    { label: "Projects Shipped", value: projectCount || 6, suffix: "" },
+    { label: "Technologies", value: skillCount || 25, suffix: "" },
+    { label: "Skill Categories", value: categoryCount || 6, suffix: "" },
   ];
 
   const bioText = profile?.bio || `I'm Christian Elias, a Software Engineering student at Addis Ababa University with a passion for building modern, scalable, and user-friendly web and mobile applications.
