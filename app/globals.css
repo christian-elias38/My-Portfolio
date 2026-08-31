@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --font-heading: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-geist-mono: var(--font-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -50,50 +50,50 @@
 }
 
 :root {
-  --background: 326 32% 8%;          /* #1c1219 deep plum */
-  --foreground: 340 45% 96%;         /* #fbf1f4 soft blush white */
-  --card: 328 26% 14%;               /* #2b1c25 dark mauve */
-  --card-foreground: 340 45% 96%;
-  --popover: 328 26% 14%;
-  --popover-foreground: 340 45% 96%;
-  --primary: 341 55% 68%;            /* #dd7fa0 dusty rose */
-  --primary-foreground: 340 45% 98%;
-  --secondary: 320 14% 42%;          /* muted mauve */
-  --secondary-foreground: 340 45% 96%;
-  --accent: 345 90% 86%;             /* #fbd0dc soft blush pink */
-  --accent-foreground: 330 55% 14%;
-  --muted: 325 16% 20%;
-  --muted-foreground: 335 22% 74%;
-  --border: 325 20% 26%;
-  --input: 325 20% 26%;
-  --ring: 341 55% 68%;
-  --destructive: 0 62% 55%;
-  --destructive-foreground: 340 45% 96%;
+  --background: 326 35% 7%;          /* #170d16 deep plum */
+  --foreground: 340 50% 96%;         /* #fdf3f6 soft blush white */
+  --card: 328 28% 13%;               /* #271724 dark plum mauve */
+  --card-foreground: 340 50% 96%;
+  --popover: 328 28% 13%;
+  --popover-foreground: 340 50% 96%;
+  --primary: 341 65% 68%;            /* #e2789f vibrant dusty rose */
+  --primary-foreground: 340 50% 98%;
+  --secondary: 320 20% 35%;          /* muted plum */
+  --secondary-foreground: 340 50% 96%;
+  --accent: 345 95% 85%;             /* #ffcbe0 soft blush pink */
+  --accent-foreground: 330 60% 12%;
+  --muted: 325 20% 18%;
+  --muted-foreground: 335 25% 76%;
+  --border: 325 22% 25%;
+  --input: 325 22% 25%;
+  --ring: 341 65% 68%;
+  --destructive: 0 65% 58%;
+  --destructive-foreground: 340 50% 96%;
   --radius: 1.75rem;
   --cursor-x: 50%;
   --cursor-y: 40%;
 }
 
 .dark {
-  --background: 326 32% 8%;
-  --foreground: 340 45% 96%;
-  --card: 328 26% 14%;
-  --card-foreground: 340 45% 96%;
-  --popover: 328 26% 14%;
-  --popover-foreground: 340 45% 96%;
-  --primary: 341 55% 68%;
-  --primary-foreground: 340 45% 98%;
-  --secondary: 320 14% 42%;
-  --secondary-foreground: 340 45% 96%;
-  --accent: 345 90% 86%;
-  --accent-foreground: 330 55% 14%;
-  --muted: 325 16% 20%;
-  --muted-foreground: 335 22% 74%;
-  --border: 325 20% 26%;
-  --input: 325 20% 26%;
-  --ring: 341 55% 68%;
-  --destructive: 0 62% 55%;
-  --destructive-foreground: 340 45% 96%;
+  --background: 326 35% 7%;
+  --foreground: 340 50% 96%;
+  --card: 328 28% 13%;
+  --card-foreground: 340 50% 96%;
+  --popover: 328 28% 13%;
+  --popover-foreground: 340 50% 96%;
+  --primary: 341 65% 68%;
+  --primary-foreground: 340 50% 98%;
+  --secondary: 320 20% 35%;
+  --secondary-foreground: 340 50% 96%;
+  --accent: 345 95% 85%;
+  --accent-foreground: 330 60% 12%;
+  --muted: 325 20% 18%;
+  --muted-foreground: 335 25% 76%;
+  --border: 325 22% 25%;
+  --input: 325 22% 25%;
+  --ring: 341 65% 68%;
+  --destructive: 0 65% 58%;
+  --destructive-foreground: 340 50% 96%;
   --radius: 1.75rem;
 }
 
@@ -102,27 +102,27 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
   html {
     @apply font-sans;
   }
 }
 
-/* Signature pastel gradient — anchored to the brand palette (deep plum → blush pink) */
+/* Signature pastel dark plum gradient matching reference */
 :root {
-  --gradient-deep: #4a1a42;
-  --gradient-warm: #b25c85;
-  --gradient-soft: #f2a6c2;
-  --gradient-cream: #fde2ec;
+  --gradient-deep: #3b1935;
+  --gradient-warm: #c5658d;
+  --gradient-soft: #f4a9c6;
+  --gradient-cream: #fde5ed;
 }
 
 .bg-ambient {
   background:
-    radial-gradient(55% 45% at var(--cursor-x) var(--cursor-y), color-mix(in oklab, var(--gradient-cream) 16%, transparent), transparent 70%),
-    radial-gradient(90% 70% at 15% 0%, color-mix(in oklab, var(--gradient-soft) 10%, transparent), transparent 60%),
-    radial-gradient(120% 90% at 85% 100%, color-mix(in oklab, var(--gradient-deep) 40%, transparent), transparent 65%),
-    hsl(326 32% 8%);
+    radial-gradient(75vw 60vh at 12% 10%, rgba(225, 110, 155, 0.4), transparent 70%),
+    radial-gradient(60vw 50vh at 88% 25%, rgba(175, 75, 130, 0.22), transparent 70%),
+    radial-gradient(90vw 70vh at 50% 85%, rgba(65, 30, 60, 0.45), transparent 80%),
+    #170d16;
 }
 
 /* Large, slow-drifting mesh used behind hero-adjacent sections for depth.
