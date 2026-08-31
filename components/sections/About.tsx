@@ -44,6 +44,11 @@ export async function About() {
     { label: "Skill Categories", value: categoryCount, suffix: "" },
   ];
 
+  const bioText = profile?.bio || `I'm Christian Elias, a Software Engineering student at Addis Ababa University with a passion for building modern, scalable, and user-friendly web and mobile applications.
+
+I specialize in full-stack engineering using Next.js, React, TypeScript, Node.js, PostgreSQL, and Prisma, alongside cross-platform mobile development with Flutter. My goal is to build impactful digital products with clean architecture and beautiful design.`;
+  const location = profile?.location || "Addis Ababa, Ethiopia";
+
   return (
     <Section id="about">
       <Container>
@@ -52,8 +57,8 @@ export async function About() {
         </FadeIn>
         <div className="grid md:grid-cols-2 gap-12 items-start mb-12">
           <FadeIn delay={0.1}>
-            <p className="text-foreground/70 leading-relaxed whitespace-pre-line mb-6">{profile?.bio}</p>
-            {profile?.location && <p className="text-sm text-muted-foreground">📍 {profile.location}</p>}
+            <p className="text-foreground/85 text-base md:text-lg leading-relaxed whitespace-pre-line mb-6 font-medium">{bioText}</p>
+            <p className="text-sm text-accent font-bold">📍 {location}</p>
           </FadeIn>
           <div className="grid grid-cols-2 gap-4">
             {highlights.map((item, i) => (
