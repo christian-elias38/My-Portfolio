@@ -21,6 +21,7 @@ I'm continuously learning cloud technologies, AI-powered applications, and moder
       location: 'Addis Ababa, Ethiopia',
       github: 'https://github.com/christian-elias38',
       linkedin: 'https://www.linkedin.com/in/christiane-006073382/',
+      profileImage: '/profile.jpg',
     },
   })
 
@@ -95,93 +96,77 @@ await prisma.experience.create({
     endDate: null,
   },
 })
-
- await prisma.project.createMany({
-  data: [
-    {
-      title: 'Student Registration Platform',
-      description:
-        'A full-stack Student Registration System built with React, Node.js, Express, and SQLite. Provides CRUD operations for managing student records with a clean, responsive interface.',
-      technologies: ['React', 'Node.js', 'Express', 'SQLite'],
-      category: 'Full-Stack',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/student-registration-platform',
-      imageUrl: 'https://res.cloudinary.com/p3v67tvk/image/upload/v1783655960/photo_2026-07-10_06-47-42_sd7ac0.jpg',
-      featured: true,
-    },
-    {
-      title: 'Fitness Challenge App',
-      description:
-        'A Flutter application that allows users to create and track fitness challenges. Users can add workout challenges, monitor progress, update challenge status, and delete completed or unwanted challenges.',
-      technologies: ['Flutter', 'Dart'],
-      category: 'Mobile',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/Fitness-Challenge-App',
-      featured: true,
-    },
-    {
-      title: 'Calculator Project',
-      description:
-        'A clean, functional calculator application built with HTML, CSS, and JavaScript. Demonstrates DOM manipulation, event handling, and responsive UI design.',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      category: 'Frontend',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/Calculator-Project',
-      imageUrl: 'https://res.cloudinary.com/p3v67tvk/image/upload/v1783655960/photo_2026-07-10_06-38-42_el1h8f.jpg',
-      featured: false,
-    },
-    {
-      title: 'Car Maintenance Tracker',
-      description:
-        'A cross-platform mobile app for tracking vehicle maintenance schedules, service records, and reminders. Built with Flutter for a smooth, native-like experience.',
-      technologies: ['Flutter', 'Dart'],
-      category: 'Mobile',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/Car-MaIntenance-Tracker-',
-      featured: false,
-    },
-    {
-      title: 'Maze Project',
-      description:
-        'A Python-based maze generation and solving project demonstrating algorithmic problem solving, pathfinding logic, and interactive visualization techniques.',
-      technologies: ['Python'],
-      category: 'Algorithms',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/maze_project',
-      featured: false,
-    },
-    {
-      title: 'C++ Academic Project',
-      description:
-        'University coursework project implementing core programming concepts in C++, including data structures, algorithms, and systems-level programming patterns.',
-      technologies: ['C++'],
-      category: 'Systems',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/Christian-Elias-',
-      featured: false,
-    },
-    {
-      title: 'MiniGit',
-      description:
-        'A lightweight Git-like version control system implemented in C++. Explores core version control concepts including commits, branching, and repository management.',
-      technologies: ['C++'],
-      category: 'Systems',
-      year: 2025,
-      githubUrl: 'https://github.com/christian-elias38/MiniGit1',
-      featured: false,
-    },
-    {
-      title: 'Building Widgets',
-      description:
-        'A C++ project exploring reusable UI widget/component construction. (Placeholder description — update via the admin dashboard with project specifics.)',
-      technologies: ['C++'],
-      category: 'Systems',
-      year: 2026,
-      githubUrl: 'https://github.com/christian-elias38/Building-Widgets',
-      featured: false,
-    },
-  ],
-})
+  await prisma.project.createMany({
+    data: [
+      {
+        title: 'Dreamy Portfolio & Web Platform',
+        description:
+          'My personal portfolio crafted with a soft dark plum gradient theme, floating visuals, interactive 3D elements, card animations, and smooth section transitions.',
+        technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Prisma'],
+        category: 'Full-Stack',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/My-Portfolio',
+        liveUrl: 'https://christian-elias.vercel.app',
+        imageUrl: '/projects/portfolio-app.png',
+        featured: true,
+      },
+      {
+        title: 'Car Maintenance Tracker',
+        description:
+          'A cross-platform mobile application for tracking vehicle service schedules, maintenance records, cost analysis, and custom notes with custom form validation.',
+        technologies: ['Flutter', 'Dart', 'Mobile UI', 'SQLite'],
+        category: 'Mobile',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/Car-MaIntenance-Tracker-',
+        imageUrl: '/projects/car-maintenance.png',
+        featured: true,
+      },
+      {
+        title: 'Maze Pathfinding & Generation',
+        description:
+          'An algorithmic project in Python demonstrating maze generation, pathfinding logic, state visualization, and interactive node grid exploration with visual step tracking.',
+        technologies: ['Python', 'Algorithms', 'Pathfinding', 'Visualization'],
+        category: 'Algorithms',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/maze_project',
+        imageUrl: '/projects/maze-algorithm.png',
+        featured: true,
+      },
+      {
+        title: 'Student Registration Platform',
+        description:
+          'A full-stack Student Registration System built with React, Node.js, Express, and SQLite. Provides CRUD operations for managing student records with a clean interface.',
+        technologies: ['React', 'Node.js', 'Express', 'SQLite'],
+        category: 'Full-Stack',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/student-registration-platform',
+        imageUrl: 'https://res.cloudinary.com/p3v67tvk/image/upload/v1783655960/photo_2026-07-10_06-47-42_sd7ac0.jpg',
+        featured: false,
+      },
+      {
+        title: 'Fitness Challenge App',
+        description:
+          'A Flutter application that allows users to create and track fitness challenges, monitor workout progress, update challenge status, and analyze goal completion.',
+        technologies: ['Flutter', 'Dart', 'Mobile UI', 'Fitness Tracker'],
+        category: 'Mobile',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/Fitness-Challenge-App',
+        imageUrl: '/projects/fitness-challenge.png',
+        featured: false,
+      },
+      {
+        title: 'Gojo Real Estate',
+        description:
+          'A modern real estate platform built for browsing, searching, and managing property listings with clean UI, filtering, and responsive design.',
+        technologies: ['React', 'Next.js', 'Tailwind CSS', 'JavaScript', 'Real Estate UI'],
+        category: 'Frontend',
+        year: 2026,
+        githubUrl: 'https://github.com/christian-elias38/Gojo-Real-Estate',
+        imageUrl: '/projects/gojo-realestate.png',
+        featured: false,
+      },
+    ],
+  })
   // Certificates and Blog Posts intentionally left empty per your instructions —
   // add them via the admin dashboard once you actually have them.
 }
