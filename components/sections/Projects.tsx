@@ -11,7 +11,7 @@ const defaultProjects = [
     id: "proj-1",
     title: "Dreamy Portfolio & Web Platform",
     description: "My personal portfolio crafted with a soft dark plum gradient theme, animated card components, interactive 3D elements, and smooth section transitions.",
-    imageUrl: "/projects/portfolio-app.png",
+    imageUrl: "/profile.jpg",
     githubUrl: "https://github.com/christian-elias38/My-Portfolio",
     liveUrl: "https://christian-elias.vercel.app",
     featured: true,
