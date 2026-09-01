@@ -15,3 +15,15 @@ export function mulberry32(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+
+/** Ensures an external URL has an absolute http/https protocol prefix. */
+export function ensureAbsoluteUrl(url?: string): string {
+  if (!url) return "";
+  const trimmed = url.trim();
+  if (!trimmed) return "";
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://") || trimmed.startsWith("mailto:")) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+}
+
