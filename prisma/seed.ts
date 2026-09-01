@@ -20,7 +20,7 @@ I specialize in full-stack development using Next.js, React, TypeScript, Node.js
 I'm continuously learning cloud technologies, AI-powered applications, and modern software architecture. My goal is to become a professional software engineer who builds impactful digital products that solve real-world problems.`,
       location: 'Addis Ababa, Ethiopia',
       github: 'https://github.com/christian-elias38',
-      linkedin: 'https://www.linkedin.com/in/christiane-006073382/',
+      linkedin: 'https://www.linkedin.com/in/christiane-006073382',
       profileImage: '/profile.jpg',
     },
   })
