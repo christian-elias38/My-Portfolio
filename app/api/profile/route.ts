@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { ensureAbsoluteUrl } from "@/lib/utils";
 
 const defaultProfile = {
   name: "Christian Elias",
@@ -8,14 +9,19 @@ const defaultProfile = {
   bio: "I'm Christian Elias, a Software Engineering student at Addis Ababa University with a passion for building modern, scalable, and user-friendly web applications.",
   location: "Addis Ababa, Ethiopia",
   github: "https://github.com/christian-elias38",
-  linkedin: "https://www.linkedin.com/in/christiane-006073382/",
+  linkedin: "https://www.linkedin.com/in/christiane-006073382",
   profileImage: "/profile.jpg",
 };
 
 export async function GET() {
   try {
     const profile = await prisma.profile.findFirst();
-    return NextResponse.json(profile || defaultProfile);
+    const data = profile || defaultProfile;
+    return NextResponse.json({
+      ...data,
+      github: ensureAbsoluteUrl(data.github || defaultProfile.github),
+      linkedin: ensureAbsoluteUrl(data.linkedin || defaultProfile.linkedin),
+    });
   } catch {
     return NextResponse.json(defaultProfile, { status: 200 });
   }
