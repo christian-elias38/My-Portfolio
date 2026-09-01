@@ -5,7 +5,7 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
 import { Mail, ArrowDownRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, ensureAbsoluteUrl } from "@/lib/utils";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -23,8 +23,8 @@ export async function Hero() {
 
   const profileSrc = profile?.profileImage || "/profile.jpg";
   const name = profile?.name || "Christian Elias";
-  const github = profile?.github || "https://github.com/christian-elias38";
-  const linkedin = profile?.linkedin || "https://www.linkedin.com/in/christiane-006073382/";
+  const github = ensureAbsoluteUrl(profile?.github || "https://github.com/christian-elias38");
+  const linkedin = ensureAbsoluteUrl(profile?.linkedin || "https://www.linkedin.com/in/christiane-006073382");
   const email = profile?.email || "christianelias102@gmail.com";
 
   return (
