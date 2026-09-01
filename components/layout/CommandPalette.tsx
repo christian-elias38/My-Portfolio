@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
+import { ensureAbsoluteUrl } from "@/lib/utils";
 
 const sections = [
   { id: "about", label: "About", icon: User },
@@ -83,7 +84,7 @@ export function CommandPalette() {
   function openExternal(url?: string) {
     if (!url) return;
     setOpen(false);
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(ensureAbsoluteUrl(url), "_blank", "noopener,noreferrer");
   }
 
   return (
