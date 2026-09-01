@@ -100,9 +100,9 @@ export function CommandPalette() {
 
       {open && (
         <div className="fixed inset-0 z-100 flex items-start justify-center pt-[15vh] px-4">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          <div className="relative z-10 w-full max-w-lg rounded-2xl border border-border bg-popover shadow-2xl overflow-hidden">
-            <Command loop shouldFilter>
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={() => setOpen(false)} />
+          <div className="relative z-10 w-full max-w-lg rounded-2xl border border-[#3b233a] bg-[#1d0e1c] text-foreground shadow-2xl overflow-hidden opacity-100">
+            <Command loop shouldFilter className="bg-[#1d0e1c]">
               <CommandInput placeholder="Jump to a section, or open a link..." autoFocus />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
