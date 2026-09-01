@@ -49,15 +49,18 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to send message");
+      }
       setSent(true);
       form.reset();
       toast.success("Message sent", {
         description: "Thanks for reaching out — I'll get back to you soon.",
       });
-    } catch {
+    } catch (err: any) {
       toast.error("Something went wrong", {
-        description: "Please try again later.",
+        description: err?.message || "Please try again later.",
       });
     }
   }
