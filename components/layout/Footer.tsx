@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { FooterIcon } from "@/components/footer/FooterIcon";
 import { Container } from "@/components/ui/primitives/Container";
+import { ensureAbsoluteUrl } from "@/lib/utils";
 
 type Profile = {
   name?: string;
@@ -20,8 +21,8 @@ export function Footer() {
       .catch(() => {});
   }, []);
 
-  const githubUrl = profile?.github || "https://github.com/christian-elias38";
-  const linkedinUrl = profile?.linkedin || "https://www.linkedin.com/in/christiane-006073382/";
+  const githubUrl = ensureAbsoluteUrl(profile?.github || "https://github.com/christian-elias38");
+  const linkedinUrl = ensureAbsoluteUrl(profile?.linkedin || "https://www.linkedin.com/in/christiane-006073382");
 
   return (
     <footer className="bg-card/30 border-t border-border mt-20">
