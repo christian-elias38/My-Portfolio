@@ -45,15 +45,12 @@ export async function Experience() {
   const displayExperience = experience.length > 0 ? experience : (defaultExperience as unknown as ExperienceModel[]);
 
   return (
-    <section id="experience" className="relative py-24 bg-gradient-to-br from-[#c87087] via-[#b65e76] to-[#9d4a61] text-[#22101e]">
+    <section id="experience" className="relative py-20 bg-[#170d16] text-white">
       <Container className="max-w-4xl">
         <FadeIn>
-          <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.25em] font-extrabold text-[#3a1827] mb-3">Work & Practice</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#1a0812]">
-              Experience
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-12">
+            Experience
+          </h2>
         </FadeIn>
         <ExperienceTimeline experience={displayExperience} />
       </Container>
