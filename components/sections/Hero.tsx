@@ -53,83 +53,89 @@ export async function Hero() {
 
           <div className="text-left">
             <FadeIn>
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 text-accent text-xs uppercase tracking-[0.2em] font-extrabold mb-4 shadow-md opacity-100">
-                <span className="relative flex h-1.5 w-1.5">
+              <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-[#251324] px-4 py-1.5 text-accent text-xs font-bold mb-6 shadow-lg shadow-purple-900/20">
+                <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
-                Software Engineer
+                Available for new Projects
               </span>
             </FadeIn>
-            <TextReveal
-              text={profile?.name ?? "Christian Elias"}
-              className="text-hero text-foreground mb-6"
-            />
+            
+            <FadeIn delay={0.1}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3">
+                Hey! , I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-400 font-black">{profile?.name ?? "Christian Elias"}</span>
+              </h1>
+            </FadeIn>
+
             <FadeIn delay={0.2}>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-6 leading-relaxed">
-                {profile?.headline ?? "Software Engineer building full-stack products."}
-              </p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-200/90 mb-6 tracking-tight">
+                {profile?.headline ?? "Full-Stack Developer"}
+              </h2>
             </FadeIn>
+
             <FadeIn delay={0.3}>
-              <p className="text-sm text-muted-foreground max-w-md mb-8 leading-relaxed">
-                I build modern, scalable, and user-focused digital experiences with clean code and thoughtful design.
+              <p className="text-base sm:text-lg text-pink-100/70 max-w-xl mb-8 leading-relaxed font-medium">
+                I craft beautiful, functional digital experiences that bring ideas to life. Specializing in modern web development and user-centered design.
               </p>
             </FadeIn>
+
             <FadeIn delay={0.4}>
-              <div className="flex flex-wrap gap-4 mb-10">
+              <div className="flex flex-wrap items-center gap-4 mb-10">
                 <Magnetic>
-                  <Link href="#projects" className={cn(buttonVariants({ variant: "gradient", size: "xl" }), "hover:scale-[1.03] transition-transform duration-300")}>
-                    View Projects
+                  <Link
+                    href="#projects"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-105 hover:shadow-purple-500/40 transition-all duration-300"
+                  >
+                    View My Work
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="#contact" className={cn(buttonVariants({ variant: "outline", size: "xl" }), "border-gradient-glow hover:border-transparent")}>
-                    Contact Me
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center justify-center rounded-full border border-purple-500/40 bg-[#1f101e] px-7 py-3.5 text-sm font-extrabold text-pink-200 hover:border-accent hover:bg-purple-950/40 transition-all duration-300 shadow-md"
+                  >
+                    Get in Touch
                   </Link>
                 </Magnetic>
               </div>
             </FadeIn>
+
             <FadeIn delay={0.5}>
-              <div className="flex items-center gap-6 text-muted-foreground mb-10">
+              <div className="flex items-center gap-6 text-pink-200/80 mb-6">
                 {github && (
                   <Magnetic>
-                    <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-accent transition-colors">
                       <SiGithub size={20} />
                     </a>
                   </Magnetic>
                 )}
                 {linkedin && (
                   <Magnetic>
-                    <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors">
                       <LinkedinIcon size={20} />
                     </a>
                   </Magnetic>
                 )}
                 {email && (
                   <Magnetic>
-                    <a href={`mailto:${email}`} aria-label="Email">
+                    <a href={`mailto:${email}`} aria-label="Email" className="hover:text-accent transition-colors">
                       <Mail className="w-5 h-5" />
                     </a>
                   </Magnetic>
                 )}
                 {profile?.resumeUrl && (
                   <Magnetic>
-                    <Link href={profile.resumeUrl} target="_blank" aria-label="Resume" className="inline-flex items-center gap-2 text-sm hover:text-accent transition-colors">
+                    <Link href={profile.resumeUrl} target="_blank" aria-label="Resume" className="inline-flex items-center gap-2 text-sm font-bold text-pink-200 hover:text-accent transition-colors">
                       Resume <ArrowDownRight className="w-4 h-4" />
                     </Link>
                   </Magnetic>
                 )}
               </div>
             </FadeIn>
+
             <FadeIn delay={0.6}>
-              <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 opacity-100 shadow-md">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                  </span>
-                  Open to opportunities
-                </span>
+              <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[#3b233a] bg-[#221321] px-3.5 py-1.5 opacity-100 shadow-md">
                   Languages I code in:
                   <span className="text-accent font-bold"><LanguageSlider /></span>
