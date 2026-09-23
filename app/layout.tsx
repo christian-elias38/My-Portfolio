@@ -10,6 +10,8 @@ import { ParticleField } from "@/components/motion/ParticleField";
 import { AmbientBackground } from "@/components/motion/AmbientBackground";
 import { PointerProvider } from "@/hooks/usePointer";
 
+import { InteractiveParticles } from "@/components/motion/InteractiveParticles";
+
 export const metadata: Metadata = {
   title: "Christian Elias | Software Engineer",
   description: "Portfolio of Christian Elias — Software Engineering student specializing in full-stack and mobile development.",
@@ -28,6 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <PointerProvider>
             <SmoothScroll>
               <CursorFollower />
+              <InteractiveParticles />
               <div className="fixed inset-0 -z-50 bg-ambient pointer-events-none" aria-hidden="true" />
               <div className="fixed inset-0 -z-45 pointer-events-none">
                 <AmbientBackground />
