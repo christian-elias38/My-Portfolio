@@ -108,46 +108,25 @@ export async function Projects() {
   const rest = displayProjects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative py-24 bg-gradient-to-b from-[#2d1b2c]/80 via-[#3a2339]/90 to-[#2d1b2c]/80 border-y border-primary/20 backdrop-blur-md">
+    <section id="projects" className="relative py-20 bg-[#170d16]/90">
       <Container>
         <FadeIn>
-          <SectionHeading eyebrow="Selected Work" title="Projects & Case Studies" />
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+              My Projects
+            </h2>
+            <p className="text-sm sm:text-base text-pink-100/70 leading-relaxed font-medium">
+              A collection of projects I&apos;ve worked on, ranging from web applications to mobile apps and everything in between.
+            </p>
+          </div>
         </FadeIn>
 
-        <div className="space-y-16">
-          {featured.length > 0 && (
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <p className="text-xs text-accent uppercase tracking-widest font-extrabold">Featured Work</p>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featured.map((project, i) => (
-                  <FadeIn key={project.id} delay={i * 0.1}>
-                    <ProjectCard project={project} featured />
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {rest.length > 0 && (
-            <div>
-              {featured.length > 0 && (
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="w-2 h-2 rounded-full bg-primary/60" />
-                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">More Projects</p>
-                </div>
-              )}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {rest.map((project, i) => (
-                  <FadeIn key={project.id} delay={i * 0.05}>
-                    <ProjectCard project={project} />
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          )}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayProjects.map((project, i) => (
+            <FadeIn key={project.id} delay={i * 0.08}>
+              <ProjectCard project={project} featured={project.featured} />
+            </FadeIn>
+          ))}
         </div>
       </Container>
     </section>
