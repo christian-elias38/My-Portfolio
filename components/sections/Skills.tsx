@@ -49,10 +49,12 @@ export async function Skills() {
   }, {});
 
   return (
-    <Section id="skills">
+    <Section id="skills" className="py-20">
       <Container>
         <FadeIn>
-          <SectionHeading eyebrow="Technical Proficiency" title="Skills & Technologies" />
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8">
+            Skills & Technologies
+          </h2>
         </FadeIn>
         <SkillsGrid grouped={grouped} />
       </Container>
