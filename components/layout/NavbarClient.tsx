@@ -7,12 +7,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { CommandPalette } from "@/components/layout/CommandPalette";
 
 const links = [
+  { href: "#", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#certificates", label: "Certificates" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -38,8 +36,10 @@ export function NavbarClient({ name }: { name?: string | null }) {
       { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
     );
     links.forEach((l) => {
-      const el = document.querySelector(l.href);
-      if (el) observerRef.current?.observe(el);
+      if (l.href.startsWith("#") && l.href.length > 1) {
+        const el = document.querySelector(l.href);
+        if (el) observerRef.current?.observe(el);
+      }
     });
     return () => observerRef.current?.disconnect();
   }, []);
@@ -47,12 +47,12 @@ export function NavbarClient({ name }: { name?: string | null }) {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-xl bg-background/60 border-b border-border" : "bg-transparent"
+        scrolled ? "backdrop-blur-xl bg-[#170d16]/80 border-b border-purple-500/20" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-bold text-lg text-foreground">
-          {name ?? "Christian Elias"}
+        <Link href="/" className="font-extrabold text-xl tracking-tight text-white italic hover:text-pink-300 transition-colors">
+          {name ? name.toLowerCase().replace(/\s+/g, "") : "christianelias"}
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm">
           {links.map((l) => (
