@@ -43,7 +43,7 @@ export function Certificates() {
                 <DialogTrigger asChild>
                   <button className="group text-left h-full w-full rounded-3xl border border-border bg-card/40 overflow-hidden hover:border-accent/40 transition-colors">
                     {cert.imageUrl ? (
-                      <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+                      <div className="relative aspect-16/10 overflow-hidden border-b border-border">
                         <Image
                           src={cert.imageUrl}
                           alt={cert.title}
@@ -51,7 +51,7 @@ export function Certificates() {
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent" />
                       </div>
                     ) : null}
                     <div className="p-6">
