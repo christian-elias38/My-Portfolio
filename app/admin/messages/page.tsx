@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mail, Phone, Calendar, RefreshCw, Trash2 } from "lucide-react";
+import { Mail, Phone, Calendar, RefreshCw } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
 import { cn } from "@/lib/utils";
@@ -31,7 +31,11 @@ export default function AdminMessagesPage() {
   }
 
   useEffect(() => {
-    fetchMessages();
+    const timeoutId = setTimeout(() => {
+      void fetchMessages();
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
