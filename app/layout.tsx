@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -9,8 +10,13 @@ import { Hero3DWrapper } from "@/components/three/Hero3DWrapper";
 import { ParticleField } from "@/components/motion/ParticleField";
 import { AmbientBackground } from "@/components/motion/AmbientBackground";
 import { PointerProvider } from "@/hooks/usePointer";
-
 import { InteractiveParticles } from "@/components/motion/InteractiveParticles";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Christian Elias | Software Engineer",
@@ -19,12 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="font-sans" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${jakarta.variable} font-sans`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <PointerProvider>
