@@ -10,7 +10,7 @@ import type { Project } from "@prisma/client";
 
 type ProjectWithExtras = Project & { category?: string | null; year?: number | null };
 
-export function ProjectCard({ project, featured = false }: { project: ProjectWithExtras; featured?: boolean }) {
+export function ProjectCard({ project }: { project: ProjectWithExtras; featured?: boolean }) {
   const [open, setOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -75,9 +75,9 @@ export function ProjectCard({ project, featured = false }: { project: ProjectWit
           />
 
           {/* Top Image & Particles Header */}
-          <div className="relative overflow-hidden aspect-[16/10] bg-[#180c17] flex items-center justify-center shrink-0 border-b border-[#3b233a]/60">
+          <div className="relative overflow-hidden aspect-16/10 bg-[#180c17] flex items-center justify-center shrink-0 border-b border-[#3b233a]/60">
             {/* Ambient Particle Texture overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(#e2789f_1px,transparent_1px)] [background-size:16px_16px] opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(#e2789f_1px,transparent_1px)] bg-size-[16px_16px] opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
 
             {/* Glowing Date Box (Image 1 Signature Element) */}
             <div className="absolute top-3 left-3 z-20 flex flex-col items-center justify-center w-14 h-14 rounded-2xl bg-[#110810]/90 border border-purple-500/40 backdrop-blur-md shadow-lg group-hover:border-pink-400 transition-colors">
@@ -102,27 +102,27 @@ export function ProjectCard({ project, featured = false }: { project: ProjectWit
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
                 className={`transition-transform duration-700 group-hover:scale-105 ${
-                  isMobileApp ? "object-contain p-4 bg-gradient-to-b from-[#180c17] to-[#261525]" : "object-cover object-top"
+                  isMobileApp ? "object-contain p-4 bg-linear-to-b from-[#180c17] to-[#261525]" : "object-cover object-top"
                 }`}
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[#2f182e] via-[#221321] to-[#180c17] flex items-center justify-center p-6 text-center">
+              <div className="w-full h-full bg-linear-to-br from-[#2f182e] via-[#221321] to-[#180c17] flex items-center justify-center p-6 text-center">
                 <span className="text-lg font-extrabold text-white">{project.title}</span>
               </div>
             )}
 
             {/* Overlay Gradient */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#170b16] via-[#170b16]/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#170b16] via-[#170b16]/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
             {/* Live Demo / Source Code Buttons */}
-            <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-3 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+            <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-3 translate-y-0 opacity-100 sm:translate-y-3 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300 z-20">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs font-bold px-4 py-1.5 shadow-lg shadow-purple-900/50 hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-purple-600 to-pink-500 text-white text-xs font-bold px-4 py-1.5 shadow-lg shadow-purple-900/50 hover:scale-105 transition-transform"
                 >
                   Live Demo <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
@@ -142,10 +142,10 @@ export function ProjectCard({ project, featured = false }: { project: ProjectWit
           </div>
 
           {/* Card Body */}
-          <div className="p-6 flex flex-col flex-1 justify-between gap-4">
+          <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between gap-3 sm:gap-4">
             <div>
-              <div className="flex justify-between items-start gap-3 mb-2">
-                <h3 className="font-extrabold text-xl text-white tracking-tight leading-snug group-hover:text-pink-200 transition-colors">
+              <div className="flex flex-wrap justify-between items-start gap-2 sm:gap-3 mb-2">
+                <h3 className="font-extrabold text-lg sm:text-xl text-white tracking-tight leading-snug group-hover:text-pink-200 transition-colors">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-2 shrink-0 pt-0.5">
