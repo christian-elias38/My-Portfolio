@@ -17,7 +17,7 @@ export function LanguageSlider() {
 
   return (
     <div
-      className="h-7 overflow-hidden flex items-center"
+      className="inline-flex h-7 items-center overflow-hidden leading-none"
       style={{ perspective: "400px" }}
     >
       <AnimatePresence mode="wait">
@@ -27,7 +27,7 @@ export function LanguageSlider() {
           animate={{ rotateX: 0, opacity: 1, y: 0 }}
           exit={{ rotateX: 90, opacity: 0, y: -10 }}
           transition={{ duration: 0.45, ease: "easeInOut" }}
-          className="text-primary font-semibold inline-block origin-center"
+          className="text-primary font-semibold inline-flex items-center origin-center leading-none"
           style={{ transformStyle: "preserve-3d" }}
         >
           {languages[index]}
