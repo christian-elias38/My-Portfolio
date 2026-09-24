@@ -2,7 +2,6 @@ import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
-import { SectionHeading } from "@/components/ui/primitives/SectionHeading";
 import { SkillsGrid } from "@/components/sections/SkillsGrid";
 import type { Skill } from "@prisma/client";
 
