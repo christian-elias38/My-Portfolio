@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
-import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import type { Experience as ExperienceModel } from "@prisma/client";
 
