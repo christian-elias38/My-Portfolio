@@ -1,13 +1,11 @@
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
 import { Mail, ArrowDownRight } from "lucide-react";
 import Link from "next/link";
-import { cn, ensureAbsoluteUrl } from "@/lib/utils";
+import { ensureAbsoluteUrl } from "@/lib/utils";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { TextReveal } from "@/components/motion/TextReveal";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { LanguageSlider } from "@/components/motion/LanguageSlider";
 import { Container } from "@/components/ui/primitives/Container";
@@ -36,7 +34,7 @@ export async function Hero() {
         <div className="grid md:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-center w-full">
           <FadeIn direction="right">
             <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 mx-auto md:mx-0">
-              <div className="p-1.5 rounded-[2.4rem] bg-gradient-to-br from-pink-400/70 via-purple-400/50 to-rose-300/70 shadow-[0_0_50px_rgba(225,115,155,0.4)] relative w-full h-full">
+              <div className="p-1.5 rounded-[2.4rem] bg-linear-to-br from-pink-400/70 via-purple-400/50 to-rose-300/70 shadow-[0_0_50px_rgba(225,115,155,0.4)] relative w-full h-full">
                 <div className="relative w-full h-full rounded-[2.1rem] overflow-hidden bg-card border border-white/10">
                   <Image
                     src={profileSrc}
@@ -58,13 +56,13 @@ export async function Hero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
-                Available for new Projects
+                Available for new projects
               </span>
             </FadeIn>
             
             <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3">
-                Hey! , I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-400 font-black">{profile?.name ?? "Christian Elias"}</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3 leading-[0.95]">
+                Hey!, I am <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 via-purple-300 to-pink-400 font-black">{profile?.name ?? "Christian Elias"}</span>
               </h1>
             </FadeIn>
 
@@ -85,7 +83,7 @@ export async function Hero() {
                 <Magnetic>
                   <Link
                     href="#projects"
-                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-105 hover:shadow-purple-500/40 transition-all duration-300"
+                    className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-105 hover:shadow-purple-500/40 transition-all duration-300"
                   >
                     View My Work
                   </Link>
