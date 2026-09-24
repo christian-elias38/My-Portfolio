@@ -6,7 +6,7 @@ export function PixelCat() {
   return (
     <div className="relative flex items-center justify-center p-8 w-full max-w-sm mx-auto">
       {/* Background radial glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
+      <div className="absolute inset-0 bg-linear-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
 
       {/* Floating Sparkles around the pixel cat */}
       <motion.div
