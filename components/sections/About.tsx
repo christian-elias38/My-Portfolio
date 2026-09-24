@@ -69,7 +69,7 @@ I'm always excited to work on projects that challenge me to grow and learn somet
           {stats.map((stat, i) => (
             <FadeIn key={stat.label} delay={0.1 + i * 0.08}>
               <GlassCard className="p-6 text-center border-purple-500/20 bg-[#1e0f1d]/80">
-                <p className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300 tabular-nums">
+                <p className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-purple-300 tabular-nums">
                   <StatCounter value={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="text-xs text-pink-200/70 mt-2 uppercase tracking-wider font-extrabold">{stat.label}</p>
