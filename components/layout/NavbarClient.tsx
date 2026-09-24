@@ -76,11 +76,11 @@ export function NavbarClient({ name }: { name?: string | null }) {
             <SheetTrigger className="md:hidden inline-flex items-center justify-center rounded-md border border-border h-9 w-9 hover:bg-muted transition-colors" aria-label="Open menu">
               <Menu className="h-4 w-4" />
             </SheetTrigger>
-            <SheetContent side="right" showCloseButton>
+            <SheetContent side="right" showCloseButton className="bg-[#1d0e1c] border-[#3b233a]">
               <SheetTitle className="sr-only">Navigation</SheetTitle>
-              <div className="mt-8 flex flex-col gap-6 text-lg">
+              <div className="mt-8 flex flex-col gap-4 text-lg">
                 {links.map((l) => (
-                  <Link key={l.href} href={l.href} className="text-foreground/80 hover:text-accent transition-colors">
+                  <Link key={l.href} href={l.href} className="rounded-lg px-2 py-2 text-foreground/80 hover:text-accent hover:bg-[#2a1828] transition-colors">
                     {l.label}
                   </Link>
                 ))}
