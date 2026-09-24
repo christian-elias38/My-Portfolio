@@ -1,9 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectCard } from "@/components/sections/ProjectCard";
-import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
-import { SectionHeading } from "@/components/ui/primitives/SectionHeading";
 import type { Project } from "@prisma/client";
 
 const defaultProjects = [
@@ -104,8 +102,6 @@ export async function Projects() {
   const displayProjects = rawProjects.filter(
     (p) => !p.title.toLowerCase().includes("minigit") && !p.title.toLowerCase().includes("calculator")
   );
-  const featured = displayProjects.filter((p) => p.featured);
-  const rest = displayProjects.filter((p) => !p.featured);
 
   return (
     <section id="projects" className="relative py-20 bg-[#170d16]/90">
