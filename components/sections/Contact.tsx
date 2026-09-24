@@ -12,7 +12,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { Mail, CheckCircle2 } from "lucide-react";
-import { SiInstagram, SiYoutube, SiX, SiGithub } from "@icons-pack/react-simple-icons";
+import { SiInstagram, SiYoutube, SiX } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
 import { toast, Toaster } from "sonner";
 
@@ -56,9 +56,10 @@ export function Contact() {
       toast.success("Message sent successfully!", {
         description: "Thanks for reaching out — I'll get back to you soon.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Please try again later.";
       toast.error("Something went wrong", {
-        description: err?.message || "Please try again later.",
+        description: message,
       });
     }
   }
@@ -132,7 +133,7 @@ export function Contact() {
                     <Button
                       type="submit"
                       disabled={form.formState.isSubmitting}
-                      className="w-full rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-[1.02] transition-transform"
+                      className="w-full rounded-full bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-[1.02] transition-transform"
                     >
                       {form.formState.isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
