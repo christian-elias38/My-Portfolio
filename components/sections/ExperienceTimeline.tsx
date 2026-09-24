@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, CheckCircle2 } from "lucide-react";
-import { TechBadge } from "@/components/ui/primitives/TechBadge";
+import { CheckCircle2 } from "lucide-react";
 import type { Experience as ExperienceModel } from "@prisma/client";
 
 type ExperienceWithExtras = ExperienceModel & {
@@ -27,7 +26,7 @@ export function ExperienceTimeline({ experience }: { experience: ExperienceWithE
               className="relative"
             >
               {/* Year badge node on vertical line */}
-              <span className="absolute -left-[44px] sm:-left-[46px] top-1.5 flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 text-[11px] font-black text-white shadow-lg shadow-purple-900/50 border border-purple-300/40">
+              <span className="absolute -left-11 sm:-left-11.5 top-1.5 flex items-center justify-center w-9 h-9 rounded-full bg-linear-to-br from-purple-600 to-pink-600 text-[11px] font-black text-white shadow-lg shadow-purple-900/50 border border-purple-300/40">
                 {year}
               </span>
 
