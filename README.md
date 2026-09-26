@@ -3,7 +3,7 @@
 My personal developer portfolio, built from the ground up as a full-stack Next.js application — not a template, not a theme.
 
 ## Live Site
-[your-deployed-url-here]
+[https://christian-elias.vercel.app/]
 
 ## Tech Stack
 - **Framework:** Next.js (App Router) + TypeScript
@@ -13,7 +13,6 @@ My personal developer portfolio, built from the ground up as a full-stack Next.j
 - **Animation/3D:** Framer Motion, GSAP, Three.js via React Three Fiber, Lenis for smooth scroll
 
 ## Features
-- [Add 2-4 bullets on actual page/feature content — projects showcase, contact form, blog, whatever the site actually does]
 - Custom burgundy/warm-earth-tone design system enforced through shadcn CSS variables
 - 3D interactive elements rendered with React Three Fiber
 
@@ -27,11 +26,7 @@ My personal developer portfolio, built from the ground up as a full-stack Next.j
 \`\`\`bash
 git clone https://github.com/chr1133/My-Portfolio.git
 cd My-Portfolio
-npm install
-cp .env.example .env  # add DATABASE_URL, CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
-npx prisma generate
-npm run dev
+pnpm install
+pnpm run dev
 \`\`\`
 
-## License
-[MIT or whatever you prefer]
