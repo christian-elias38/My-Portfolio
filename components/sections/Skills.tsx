@@ -48,12 +48,22 @@ export async function Skills() {
   }, {});
 
   return (
-    <Section id="skills" className="py-20">
+    <Section id="skills" className="py-20 bg-transparent">
       <Container>
         <FadeIn>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8">
-            Skills & Technologies
-          </h2>
+          <div className="mb-10 text-center max-w-2xl mx-auto">
+            <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
+              <span className="w-6 h-px bg-[#d8769c]/60" />
+              MY SKILLS
+              <span className="w-6 h-px bg-[#d8769c]/60" />
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+              Tools I Work <span className="text-[#e875a3]">With</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#d9b8c9] leading-relaxed font-medium">
+              My toolkit for crafting calm, thoughtful, and beautifully detailed digital experiences.
+            </p>
+          </div>
         </FadeIn>
         <SkillsGrid grouped={grouped} />
       </Container>
