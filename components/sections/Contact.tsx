@@ -75,7 +75,7 @@ export function Contact() {
               <span className="w-6 h-px bg-[#d8769c]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-              Let&apos;s Bloom <span className="text-[#e875a3]">Together</span>
+              Let&apos;s Work <span className="text-[#e875a3]">Together</span>
             </h2>
           </div>
         </FadeIn>
@@ -85,7 +85,7 @@ export function Contact() {
           <FadeIn delay={0.1}>
             <div className="rounded-2xl border border-[#4e203f]/70 bg-[#220f1e]/80 p-6 sm:p-8 shadow-xl flex flex-col justify-between h-full gap-6">
               <div>
-                <h3 className="text-xl font-bold text-white mb-3">Drop a message to brighten my day ♡</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Send me a message</h3>
                 <p className="text-sm text-[#e0c8d4] leading-relaxed font-medium mb-6">
                   I&apos;m always open to discussing new opportunities, creative software projects, or tech collaborations. Feel free to reach out anytime!
                 </p>
@@ -182,7 +182,7 @@ export function Contact() {
                       disabled={form.formState.isSubmitting}
                       className="w-full rounded-full bg-gradient-to-r from-[#b34972] via-[#d66a94] to-[#b34972] py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-[1.02] transition-transform cursor-pointer flex items-center justify-center gap-2"
                     >
-                      <span>{form.formState.isSubmitting ? "Sending..." : "Send Some Sunshine"}</span>
+                      <span>{form.formState.isSubmitting ? "Sending..." : "Send Message"}</span>
                       <Send className="w-4 h-4" />
                     </Button>
                   </form>
