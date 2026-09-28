@@ -17,6 +17,17 @@ import { Section } from "@/components/ui/primitives/Section";
 import { Award } from "lucide-react";
 import type { Certificate } from "@prisma/client";
 
+const defaultCertificates: Certificate[] = [
+  {
+    id: "cert-udacity-android",
+    title: "Global Chapters - Ethiopia - Android Fundamentals",
+    issuer: "Udacity",
+    date: new Date("2026-09-28"),
+    imageUrl: "/certificates/udacity-android-fundamentals.png",
+    certificateUrl: "https://www.udacity.com/certificate/lp/01269edb-4613-419a-8af5-fa5fdf00a51c",
+  },
+];
+
 export function Certificates() {
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const [openId, setOpenId] = useState<string | null>(null);
@@ -28,7 +39,7 @@ export function Certificates() {
       .catch(() => setCertificates([]));
   }, []);
 
-  if (certificates.length === 0) return null;
+  const displayCertificates = certificates.length > 0 ? certificates : defaultCertificates;
 
   return (
     <Section id="certificates">
@@ -37,7 +48,7 @@ export function Certificates() {
           <SectionHeading eyebrow="Credentials" title="Certificates" />
         </FadeIn>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certificates.map((cert, i) => (
+          {displayCertificates.map((cert, i) => (
             <FadeIn key={cert.id} delay={i * 0.1}>
               <Dialog open={openId === cert.id} onOpenChange={(v) => setOpenId(v ? cert.id : null)}>
                 <DialogTrigger asChild>
