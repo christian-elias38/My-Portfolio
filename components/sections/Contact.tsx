@@ -12,7 +12,7 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { Mail, CheckCircle2 } from "lucide-react";
-import { SiInstagram, SiYoutube, SiX } from "@icons-pack/react-simple-icons";
+import { SiYoutube } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
 import { toast, Toaster } from "sonner";
 
@@ -171,16 +171,10 @@ export function Contact() {
               <div className="pt-6 border-t border-purple-500/20">
                 <p className="text-xs font-extrabold text-pink-200/90 mb-4 uppercase tracking-wider">My Socials</p>
                 <div className="flex items-center gap-4 text-pink-300">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
-                    <SiInstagram size={16} />
-                  </a>
                   <a href={`mailto:${profile?.email ?? "christianelias102@gmail.com"}`} aria-label="Email" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
                     <Mail className="w-4 h-4" />
                   </a>
-                  <a href="https://x.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
-                    <SiX size={16} />
-                  </a>
-                  <a href={profile?.linkedin ?? "https://linkedin.com"} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
+                  <a href={profile?.linkedin ?? "https://www.linkedin.com/in/christiane-006073382"} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
                     <LinkedinIcon size={16} />
                   </a>
                   <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="p-2.5 rounded-full bg-[#170b16] border border-purple-500/30 hover:text-white hover:border-purple-400 transition-colors">
