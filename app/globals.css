@@ -109,21 +109,20 @@
   }
 }
 
-/* Signature pastel dark plum gradient matching reference */
 :root {
-  --gradient-deep: #3b1935;
-  --gradient-warm: #c5658d;
-  --gradient-soft: #f4a9c6;
-  --gradient-cream: #fde5ed;
+  --gradient-deep: #2a0f24;
+  --gradient-warm: #d86a94;
+  --gradient-soft: #f48cb5;
+  --gradient-cream: #fce4ee;
 }
 
 .bg-ambient {
   background:
-    radial-gradient(75vw 60vh at 12% 10%, rgba(225, 110, 155, 0.25), transparent 70%),
-    radial-gradient(60vw 50vh at 88% 25%, rgba(175, 75, 130, 0.15), transparent 70%),
-    linear-gradient(to bottom, rgba(12, 6, 12, 0.4), rgba(12, 6, 12, 0.65)),
+    radial-gradient(75vw 60vh at 12% 10%, rgba(216, 106, 148, 0.22), transparent 70%),
+    radial-gradient(60vw 50vh at 88% 25%, rgba(181, 70, 115, 0.18), transparent 70%),
+    linear-gradient(to bottom, rgba(19, 8, 17, 0.35), rgba(19, 8, 17, 0.6)),
     url('/bg-wave.png') center / cover no-repeat fixed,
-    #120811;
+    #150913;
 }
 
 /* Large, slow-drifting mesh used behind hero-adjacent sections for depth.
