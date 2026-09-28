@@ -51,30 +51,27 @@ export async function Hero() {
 
           <div className="text-left">
             <FadeIn>
-              <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-[#251324] px-4 py-1.5 text-accent text-xs font-bold mb-6 shadow-lg shadow-purple-900/20">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                </span>
-                Available for new projects
-              </span>
+              <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-4 flex items-center gap-2">
+                <span className="w-6 h-px bg-[#d8769c]/60" />
+                WELCOME TO MY PORTFOLIO
+              </p>
             </FadeIn>
             
             <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3 leading-[0.95]">
-                Hey!, I am <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-300 via-purple-300 to-pink-400 font-black">{profile?.name ?? "Christian Elias"}</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3 leading-[1.02]">
+                Hi there, I&apos;m <span className="text-[#e875a3] font-black">{profile?.name ?? "Christian Elias"}</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-200/90 mb-6 tracking-tight">
-                {profile?.headline ?? "Full-Stack Developer"}
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#f4a8c9]/90 mb-5 tracking-tight">
+                {profile?.headline ?? "Software Engineering Student & Full-Stack Developer"}
               </h2>
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <p className="text-base sm:text-lg text-pink-100/70 max-w-xl mb-8 leading-relaxed font-medium">
-                I craft beautiful, functional digital experiences that bring ideas to life. Specializing in modern web development and user-centered design.
+              <p className="text-base sm:text-lg text-[#e0c8d4] max-w-xl mb-8 leading-relaxed font-medium">
+                Frontend, Mobile & Full-Stack Developer crafting delicate digital experiences into clean, beautiful, and scalable software.
               </p>
             </FadeIn>
 
@@ -83,15 +80,15 @@ export async function Hero() {
                 <Magnetic>
                   <Link
                     href="#projects"
-                    className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-purple-600 via-pink-500 to-purple-600 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-purple-600/30 hover:scale-105 hover:shadow-purple-500/40 transition-all duration-300"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#b34972] via-[#d66a94] to-[#b34972] px-8 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-105 transition-all duration-300"
                   >
-                    View My Work
+                    Discover My Creations →
                   </Link>
                 </Magnetic>
                 <Magnetic>
                   <Link
                     href="#contact"
-                    className="inline-flex items-center justify-center rounded-full border border-purple-500/40 bg-[#1f101e] px-7 py-3.5 text-sm font-extrabold text-pink-200 hover:border-accent hover:bg-purple-950/40 transition-all duration-300 shadow-md"
+                    className="inline-flex items-center justify-center rounded-full border border-[#522144] bg-[#220d1d] px-7 py-3.5 text-sm font-extrabold text-[#f4b3cf] hover:border-[#d66a94] hover:bg-[#32122b] transition-all duration-300 shadow-md"
                   >
                     Get in Touch
                   </Link>
