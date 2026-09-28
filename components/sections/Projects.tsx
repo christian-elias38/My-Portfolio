@@ -15,58 +15,12 @@ export type ProjectExtra = Project & {
 
 const defaultProjects: ProjectExtra[] = [
   {
-    id: "proj-campus-tour",
-    title: "Campus Tour Assistant",
-    subtitle: "Campus Navigation Platform",
-    projectType: "TEAM PROJECT",
-    role: "FULL-STACK DEVELOPER",
-    description: "A responsive team-built application that helps students explore campus buildings through an interactive Leaflet map, an admin content panel, and a visitor feedback system.",
-    imageUrl: "/projects/campus-tour.png",
-    githubUrl: "https://github.com/christian-elias38/Campus-Tour-Assistant",
-    liveUrl: "https://campus-tour-assistant.vercel.app",
-    featured: true,
-    technologies: ["React", "TypeScript", "Node.js", "Express", "Supabase", "Leaflet"],
-    category: "Full-Stack",
-    year: 2026,
-    features: [
-      "Interactive Leaflet map with building search",
-      "JWT-secured admin content panel",
-      "Image uploads via Supabase Storage",
-      "Visitor feedback collection"
-    ],
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: "proj-birrflow",
-    title: "BirrFlow",
-    subtitle: "Personal Finance Dashboard",
-    projectType: "TEAM PROJECT",
-    role: "FULL-STACK DEVELOPER",
-    description: "A personal finance web app for tracking income and expenses with a clean dashboard and transaction history, designed for Ethiopian users and deployed on Vercel.",
-    imageUrl: "/projects/birrflow.png",
-    githubUrl: "https://github.com/christian-elias38/BirrFlow",
-    liveUrl: "https://birrflow.vercel.app",
-    featured: true,
-    technologies: ["HTML", "CSS", "JavaScript", "Vercel"],
-    category: "Full-Stack",
-    year: 2026,
-    features: [
-      "Income & expense tracking with categories",
-      "Financial dashboard with balance summary",
-      "Full transaction history & filtering",
-      "Responsive UI deployed on Vercel"
-    ],
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
     id: "proj-portfolio",
     title: "Dreamy Portfolio & Web Platform",
-    subtitle: "Modern Interactive Portfolio",
+    subtitle: "Modern Interactive Showcase",
     projectType: "PERSONAL PROJECT",
     role: "FULL-STACK DEVELOPER",
-    description: "My personal portfolio crafted with a golden wave theme, expandable project cards, interactive 3D elements, and smooth section transitions.",
+    description: "My personal portfolio crafted with a warm rose-gold wave theme, expandable project cards, interactive 3D elements, and smooth section transitions.",
     imageUrl: "/projects/portfolio-app.png",
     githubUrl: "https://github.com/christian-elias38/My-Portfolio",
     liveUrl: "https://christian-elias.vercel.app",
@@ -152,6 +106,52 @@ const defaultProjects: ProjectExtra[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
+  {
+    id: "proj-fitness-challenge",
+    title: "Fitness Challenge App",
+    subtitle: "Workout & Goal Progress Tracker",
+    projectType: "PERSONAL PROJECT",
+    role: "MOBILE DEVELOPER",
+    description: "A Flutter application that allows users to create and track fitness challenges, monitor workout progress, update status, and analyze goal completion.",
+    imageUrl: "/projects/fitness-challenge.png",
+    githubUrl: "https://github.com/christian-elias38/Fitness-Challenge-App",
+    liveUrl: "https://github.com/christian-elias38/Fitness-Challenge-App",
+    featured: false,
+    technologies: ["Flutter", "Dart", "Mobile UI", "Fitness Tracker"],
+    category: "Mobile",
+    year: 2026,
+    features: [
+      "Custom workout challenge creation",
+      "Daily fitness progress monitoring",
+      "Goal completion analytics & charts",
+      "Interactive Flutter mobile UI"
+    ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: "proj-gojo-realestate",
+    title: "Gojo Real Estate",
+    subtitle: "Property Browsing & Listings Portal",
+    projectType: "PERSONAL PROJECT",
+    role: "FRONTEND DEVELOPER",
+    description: "A modern real estate platform built for browsing, searching, and managing property listings with clean UI, filtering, and responsive design.",
+    imageUrl: "/projects/gojo-realestate.png",
+    githubUrl: "https://github.com/christian-elias38/Gojo-Real-Estate",
+    liveUrl: "https://github.com/christian-elias38/Gojo-Real-Estate",
+    featured: false,
+    technologies: ["React", "Next.js", "Tailwind CSS", "JavaScript", "Real Estate UI"],
+    category: "Frontend",
+    year: 2026,
+    features: [
+      "Property search & filtering system",
+      "Detailed property view cards",
+      "Responsive real estate showcase",
+      "Modern Next.js frontend architecture"
+    ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }
 ];
 
 export async function Projects() {
@@ -161,26 +161,35 @@ export async function Projects() {
   } catch {}
 
   const rawProjects = projects.length > 0 ? (projects as ProjectExtra[]) : defaultProjects;
-  // Filter out any MiniGit or Calculator project as explicitly requested by user
+  // Filter out any MiniGit, Calculator, Campus Tour, or BirrFlow project
   const displayProjects = rawProjects.filter(
-    (p) => !p.title.toLowerCase().includes("minigit") && !p.title.toLowerCase().includes("calculator")
+    (p) =>
+      !p.title.toLowerCase().includes("minigit") &&
+      !p.title.toLowerCase().includes("calculator") &&
+      !p.title.toLowerCase().includes("campus tour") &&
+      !p.title.toLowerCase().includes("birrflow")
   );
 
   return (
     <section id="projects" className="relative py-20 bg-transparent">
       <Container>
         <FadeIn>
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
+              <span className="w-6 h-px bg-[#d8769c]/60" />
+              MY PROJECTS
+              <span className="w-6 h-px bg-[#d8769c]/60" />
+            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-              My Projects
+              Featured <span className="text-[#e875a3]">Projects</span>
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium">
-              A collection of projects I&apos;ve built, ranging from full-stack web platforms to mobile applications and algorithm visualizers.
+            <p className="text-sm sm:text-base text-[#d9b8c9] leading-relaxed font-medium">
+              A selection of my recent work, each built with care, creativity, and attention to detail.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
           {displayProjects.map((project, i) => (
             <FadeIn key={project.id} delay={i * 0.08}>
               <ProjectCard project={project} featured={project.featured} />
