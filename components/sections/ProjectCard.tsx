@@ -6,7 +6,6 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 import { SquareArrowOutUpRight, ChevronDown, Users, User, Code2, Check, Maximize2 } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { motion } from "framer-motion";
 import type { ProjectExtra } from "./Projects";
 
 export function ProjectCard({ project }: { project: ProjectExtra; featured?: boolean }) {
@@ -20,29 +19,17 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
   const subtitle = project.subtitle || (project.category ? `${project.category} Project` : "Software Application");
 
   const defaultFeaturesMap: Record<string, string[]> = {
-    "Campus Tour Assistant": [
-      "Interactive Leaflet map with building search",
-      "JWT-secured admin content panel",
-      "Image uploads via Supabase Storage",
-      "Visitor feedback collection",
-    ],
-    "BirrFlow": [
-      "Income & expense tracking with categories",
-      "Financial dashboard with balance summary",
-      "Full transaction history & filtering",
-      "Responsive UI deployed on Vercel",
+    "Dreamy Portfolio & Web Platform": [
+      "Liquid wave ambient canvas background",
+      "Interactive 3D Three.js graphic canvas",
+      "Expandable project card details & lightbox image viewer",
+      "Full stack Next.js & Prisma API backend",
     ],
     "Car Maintenance Tracker": [
       "Cross-platform Flutter & Dart mobile application",
       "Service schedule & maintenance log tracking",
       "Cost tracking & fuel analytics",
       "Offline-first SQLite database storage",
-    ],
-    "Dreamy Portfolio & Web Platform": [
-      "Liquid wave ambient canvas background",
-      "Interactive 3D Three.js graphic canvas",
-      "Expandable project card details & lightbox image viewer",
-      "Full stack Next.js & Prisma API backend",
     ],
     "Maze Pathfinding & Generation": [
       "Maze generation via Depth-First Search & Prim's algorithm",
@@ -55,6 +42,18 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
       "RESTful Express API backend server",
       "Relational database storage & queries",
       "Clean responsive administration interface",
+    ],
+    "Fitness Challenge App": [
+      "Custom workout challenge creation",
+      "Daily fitness progress monitoring",
+      "Goal completion analytics & charts",
+      "Interactive Flutter mobile UI",
+    ],
+    "Gojo Real Estate": [
+      "Property search & filtering system",
+      "Detailed property view cards",
+      "Responsive real estate showcase",
+      "Modern Next.js frontend architecture",
     ],
   };
 
@@ -79,13 +78,13 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
     <>
       <div className="h-full flex flex-col">
         <Collapsible open={openDetails} onOpenChange={setOpenDetails} className="h-full flex flex-col">
-          <div className="group relative rounded-2xl bg-[#0b101d]/90 border border-[#1e293b] hover:border-blue-500/50 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col h-full transition-all duration-300">
+          <div className="group relative rounded-2xl bg-[#1e0c19]/85 border border-[#4d213d]/70 hover:border-[#a04674]/90 shadow-[0_0_25px_rgba(180,75,120,0.15)] hover:shadow-[0_0_35px_rgba(215,100,150,0.3)] backdrop-blur-md overflow-hidden flex flex-col h-full transition-all duration-300">
             
-            {/* Viewable Project Image Container (No June 29 box) */}
+            {/* Viewable Project Image Container */}
             {project.imageUrl && (
               <div 
                 onClick={() => setImageModalOpen(true)}
-                className="relative aspect-16/9 bg-[#060a14] overflow-hidden border-b border-[#1e293b] cursor-pointer group/img shrink-0"
+                className="relative aspect-16/10 bg-[#120710] overflow-hidden border-b border-[#4d213d]/60 cursor-pointer group/img shrink-0"
               >
                 <Image
                   src={project.imageUrl}
@@ -93,13 +92,13 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className={`transition-transform duration-500 group-hover/img:scale-105 ${
-                    isMobileApp ? "object-contain p-4 bg-[#0a0f1c]" : "object-cover object-top"
+                    isMobileApp ? "object-contain p-4 bg-[#160914]" : "object-cover object-top"
                   }`}
                 />
                 
                 {/* View Image Hover Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-medium text-xs backdrop-blur-[2px]">
-                  <Maximize2 className="w-4 h-4 text-blue-400" />
+                <div className="absolute inset-0 bg-[#150712]/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-medium text-xs backdrop-blur-[2px]">
+                  <Maximize2 className="w-4 h-4 text-[#e875a3]" />
                   <span>Click to expand image</span>
                 </div>
               </div>
@@ -108,14 +107,14 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
             {/* Card Body */}
             <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-4">
               <div>
-                {/* Top Badges Row (Image 3 Style) */}
+                {/* Top Badges Row (Warm Rose Style) */}
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-[#131d30] border border-slate-700/60 text-slate-300 font-mono">
-                    {projectType.includes("TEAM") ? <Users className="w-3 h-3 text-blue-400" /> : <User className="w-3 h-3 text-purple-400" />}
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-[#281123] border border-[#522144] text-[#f4b3cf] font-mono">
+                    {projectType.includes("TEAM") ? <Users className="w-3 h-3 text-[#e875a3]" /> : <User className="w-3 h-3 text-[#f48cb5]" />}
                     {projectType}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-[#131d30] border border-slate-700/60 text-slate-300 font-mono">
-                    <Code2 className="w-3 h-3 text-cyan-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-[#281123] border border-[#522144] text-[#f4b3cf] font-mono">
+                    <Code2 className="w-3 h-3 text-[#f4a8c9]" />
                     {role}
                   </span>
                 </div>
@@ -123,10 +122,10 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                 {/* Title + Subtitle & Action Buttons Row */}
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div>
-                    <h3 className="text-xl font-extrabold text-white tracking-tight leading-snug group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-extrabold text-white tracking-tight leading-snug group-hover:text-[#f8b4d0] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-xs font-semibold text-slate-400 mt-0.5">{subtitle}</p>
+                    <p className="text-xs font-semibold text-[#d9a8c1] mt-0.5">{subtitle}</p>
                   </div>
 
                   {/* Action Buttons: Live & GitHub */}
@@ -135,7 +134,7 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                       type="button"
                       onClick={handleLiveRedirect}
                       title="Open Live App"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-500/60 text-blue-400 hover:bg-blue-500/10 hover:border-blue-400 text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[#d66a94]/60 text-[#f6abd0] bg-[#2d1226] hover:bg-[#b54673]/30 hover:border-[#f6abd0] text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95"
                     >
                       <span>Live</span>
                       <SquareArrowOutUpRight className="w-3.5 h-3.5" />
@@ -148,7 +147,7 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         title="View GitHub Repository"
-                        className="inline-flex items-center justify-center p-2 rounded-lg border border-slate-700/60 text-slate-400 hover:text-white hover:border-slate-500 text-xs font-semibold transition-all hover:bg-slate-800/50"
+                        className="inline-flex items-center justify-center p-2 rounded-full border border-[#522244] text-[#e0b4cb] hover:text-white hover:border-[#d66a94] bg-[#210d1c] text-xs font-semibold transition-all"
                       >
                         <SiGithub size={15} />
                       </a>
@@ -157,15 +156,15 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                 </div>
 
                 {/* Description Paragraph */}
-                <p className="text-sm text-slate-300 leading-relaxed my-3 font-normal">
+                <p className="text-sm text-[#e0c8d4] leading-relaxed my-3 font-normal">
                   {project.description}
                 </p>
 
-                {/* Always-Visible or Collapsible Features List */}
+                {/* Features List */}
                 <div className="space-y-2 my-4">
                   {featuresList.slice(0, openDetails ? featuresList.length : 2).map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 font-medium">
-                      <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2.5 text-xs text-[#e0c8d4] font-medium">
+                      <Check className="w-4 h-4 text-[#e875a3] shrink-0 mt-0.5" />
                       <span className="leading-snug">{feat}</span>
                     </div>
                   ))}
@@ -174,8 +173,8 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                 {/* Expandable Details Content */}
                 <CollapsibleContent className="overflow-hidden space-y-2 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0">
                   {featuresList.slice(2).map((feat, idx) => (
-                    <div key={idx + 2} className="flex items-start gap-2.5 text-xs text-slate-300 font-medium pt-1">
-                      <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                    <div key={idx + 2} className="flex items-start gap-2.5 text-xs text-[#e0c8d4] font-medium pt-1">
+                      <Check className="w-4 h-4 text-[#e875a3] shrink-0 mt-0.5" />
                       <span className="leading-snug">{feat}</span>
                     </div>
                   ))}
@@ -185,10 +184,10 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
               <div>
                 {/* Expand / Collapse Button */}
                 {featuresList.length > 2 && (
-                  <div className="pt-2 pb-3 border-t border-slate-800/60 flex items-center justify-between">
+                  <div className="pt-2 pb-3 border-t border-[#4d213d]/60 flex items-center justify-between">
                     <CollapsibleTrigger 
                       type="button" 
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#e875a3] hover:text-[#f8a5c6] transition-colors cursor-pointer"
                     >
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openDetails ? "rotate-180" : ""}`} />
                       <span>{openDetails ? "Hide details" : "Expand details"}</span>
@@ -196,12 +195,12 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
                   </div>
                 )}
 
-                {/* Technology Badges at Bottom (Image 3 Style) */}
-                <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-800/80">
+                {/* Technology Badges at Bottom */}
+                <div className="flex flex-wrap gap-2 pt-3 border-t border-[#4d213d]/70">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 rounded-md bg-[#162032] border border-blue-900/40 text-blue-300 text-xs font-semibold shadow-xs"
+                      className="px-3 py-1 rounded-full bg-[#251020] border border-[#4d223f] text-[#f4b3cf] text-xs font-semibold shadow-xs"
                     >
                       {tech}
                     </span>
@@ -216,11 +215,11 @@ export function ProjectCard({ project }: { project: ProjectExtra; featured?: boo
       {/* Lightbox Image View Modal */}
       {project.imageUrl && (
         <Dialog open={imageModalOpen} onOpenChange={setImageModalOpen}>
-          <DialogContent className="sm:max-w-4xl bg-[#0b101d] border border-slate-800 text-white p-4">
+          <DialogContent className="sm:max-w-4xl bg-[#190a16] border border-[#522144] text-white p-4">
             <DialogTitle className="text-lg font-bold text-white mb-2 flex items-center justify-between">
               <span>{project.title} — Screenshot</span>
             </DialogTitle>
-            <div className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-[#060a14] border border-slate-800">
+            <div className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-[#10050e] border border-[#4d213d]">
               <Image
                 src={project.imageUrl}
                 alt={project.title}
