@@ -33,7 +33,7 @@ export function Footer() {
           <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors">GitHub</a>
           <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors">LinkedIn</a>
         </div>
-        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {profile?.name ?? "Christian Elias"}. Made with Next.js.</p>
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {profile?.name ?? "Christian Elias"}. All rights reserved.</p>
       </Container>
     </footer>
   );
