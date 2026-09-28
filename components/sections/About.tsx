@@ -5,7 +5,7 @@ import type { Profile } from "@prisma/client";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
-import { PixelCat } from "@/components/sections/PixelCat";
+import { User, MapPin, Mail, GraduationCap } from "lucide-react";
 
 export async function About() {
   let profile: Profile | null = null;
@@ -38,29 +38,82 @@ export async function About() {
     { label: "Skill Categories", value: categoryCount || 6, suffix: "" },
   ];
 
-  const bioText = profile?.bio || `I'm a passionate creative developer and designer with over 3 years of experience building digital products that users love. I believe in the power of good design and clean code to solve real problems.
-
-When I'm not coding, you'll find me exploring new design trends, contributing to open-source projects, or sharing my knowledge through writing and speaking at conferences.
-
-I'm always excited to work on projects that challenge me to grow and learn something new.`;
+  const infoBoxes = [
+    {
+      icon: User,
+      label: "Name",
+      value: profile?.name || "Christian Elias",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: profile?.location || "Addis Ababa, Ethiopia",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: profile?.email || "christianelias102@gmail.com",
+    },
+    {
+      icon: GraduationCap,
+      label: "Education",
+      value: "BSc Software Engineering (AAIT)",
+    },
+  ];
 
   return (
-    <Section id="about" className="py-20">
+    <Section id="about" className="py-20 bg-transparent">
       <Container>
         <FadeIn>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-8">
-            About Me
-          </h2>
+          <div className="mb-12">
+            <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center gap-2">
+              <span className="w-6 h-px bg-[#d8769c]/60" />
+              ABOUT ME
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+              A little about <span className="text-[#e875a3]">me</span>
+            </h2>
+          </div>
         </FadeIn>
-        <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 items-center mb-12">
+
+        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-start mb-14">
           <FadeIn delay={0.1}>
-            <div className="space-y-4 text-pink-100/80 text-sm sm:text-base leading-relaxed font-medium">
-              <p className="whitespace-pre-line">{bioText}</p>
+            <div className="space-y-4 text-[#e0c8d4] text-base leading-relaxed font-medium">
+              <p>
+                I&apos;m a passionate full-stack developer and software engineering student who loves turning complex ideas into clean, beautiful, and intuitive web and mobile applications. I enjoy clean code, thoughtful architecture, and creating digital products that solve real-world problems.
+              </p>
+              <p>
+                Whether crafting responsive React & Next.js user interfaces, engineering RESTful backends, or developing Flutter mobile applications, I focus on performance, accessibility, and delightful user experiences.
+              </p>
+              <p className="text-xl font-bold text-[#f48cb5] pt-2 font-serif italic">
+                Christian Elias ♡
+              </p>
             </div>
           </FadeIn>
+
           <FadeIn delay={0.2}>
-            <div className="flex justify-center">
-              <PixelCat />
+            <div className="grid sm:grid-cols-2 gap-4">
+              {infoBoxes.map((box, idx) => {
+                const IconComp = box.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl bg-[#220f1e]/80 border border-[#4e203f]/60 shadow-lg hover:border-[#8d3b6a] transition-all flex items-start gap-4"
+                  >
+                    <div className="p-2.5 rounded-full bg-[#32122b] border border-[#5d234b] text-[#e875a3] shrink-0">
+                      <IconComp className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold text-[#d8769c] uppercase tracking-wider font-mono">
+                        {box.label}
+                      </p>
+                      <p className="text-sm font-semibold text-white mt-0.5 break-words">
+                        {box.value}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </FadeIn>
         </div>
@@ -68,11 +121,11 @@ I'm always excited to work on projects that challenge me to grow and learn somet
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
             <FadeIn key={stat.label} delay={0.1 + i * 0.08}>
-              <GlassCard className="p-6 text-center border-purple-500/20 bg-[#1e0f1d]/80">
-                <p className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-purple-300 tabular-nums">
+              <GlassCard className="p-6 text-center border-[#4e203f]/60 bg-[#220f1e]/80 hover:border-[#8d3b6a] transition-all">
+                <p className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#f7a8c9] to-[#e875a3] tabular-nums">
                   <StatCounter value={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="text-xs text-pink-200/70 mt-2 uppercase tracking-wider font-extrabold">{stat.label}</p>
+                <p className="text-xs text-[#d8769c] mt-2 uppercase tracking-wider font-bold font-mono">{stat.label}</p>
               </GlassCard>
             </FadeIn>
           ))}
@@ -81,4 +134,3 @@ I'm always excited to work on projects that challenge me to grow and learn somet
     </Section>
   );
 }
-
