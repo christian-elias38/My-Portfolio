@@ -5,7 +5,7 @@ import type { Profile } from "@prisma/client";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
-import { PixelCat } from "@/components/sections/PixelCat";
+import { Butterfly } from "@/components/sections/Butterfly";
 
 export async function About() {
   let profile: Profile | null = null;
@@ -72,7 +72,7 @@ export async function About() {
 
           <FadeIn delay={0.2}>
             <div className="flex items-center justify-center">
-              <PixelCat />
+              <Butterfly />
             </div>
           </FadeIn>
         </div>
