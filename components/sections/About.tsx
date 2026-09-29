@@ -5,7 +5,7 @@ import type { Profile } from "@prisma/client";
 import { Section } from "@/components/ui/primitives/Section";
 import { Container } from "@/components/ui/primitives/Container";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
-import { User, MapPin, Mail, GraduationCap } from "lucide-react";
+import { PixelCat } from "@/components/sections/PixelCat";
 
 export async function About() {
   let profile: Profile | null = null;
@@ -38,8 +38,6 @@ export async function About() {
     { label: "Skill Categories", value: categoryCount || 6, suffix: "" },
   ];
 
-
-
   return (
     <Section id="about" className="py-24 bg-gradient-to-b from-[#1d0a1b]/90 via-[#270e24]/85 to-[#1d0a1b]/90 border-y border-[#4e1c42]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#d8769c]/10 rounded-full blur-3xl pointer-events-none" />
@@ -57,7 +55,7 @@ export async function About() {
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-start mb-14">
+        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-center mb-14">
           <FadeIn delay={0.1}>
             <div className="space-y-4 text-[#e0c8d4] text-base leading-relaxed font-medium">
               <p>
@@ -67,34 +65,13 @@ export async function About() {
                 Whether crafting responsive React & Next.js user interfaces, engineering RESTful backends, or developing Flutter mobile applications, I focus on performance, accessibility, and delightful user experiences.
               </p>
               <p className="text-xl font-bold text-[#f48cb5] pt-2 font-serif italic">
-                Christian Elias ♡
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {infoBoxes.map((box, idx) => {
-                const IconComp = box.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="p-5 rounded-2xl bg-[#220f1e]/80 border border-[#4e203f]/60 shadow-lg hover:border-[#8d3b6a] transition-all flex items-start gap-4"
-                  >
-                    <div className="p-2.5 rounded-full bg-[#32122b] border border-[#5d234b] text-[#e875a3] shrink-0">
-                      <IconComp className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-bold text-[#d8769c] uppercase tracking-wider font-mono">
-                        {box.label}
-                      </p>
-                      <p className="text-sm font-semibold text-white mt-0.5 break-words">
-                        {box.value}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="flex items-center justify-center">
+              <PixelCat />
             </div>
           </FadeIn>
         </div>
