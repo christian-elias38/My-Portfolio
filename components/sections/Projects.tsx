@@ -182,12 +182,9 @@ export async function Projects() {
               SPATIAL SHOWCASE
               <span className="w-6 h-px bg-[#d8769c]/60" />
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               Featured <span className="text-[#e875a3]">Projects</span>
             </h2>
-            <p className="text-sm sm:text-base text-[#d9b8c9] leading-relaxed font-medium">
-              Explore my software creations in an interactive 3D spatial cover flow. Click or arrow to navigate through details.
-            </p>
           </div>
         </FadeIn>
 
