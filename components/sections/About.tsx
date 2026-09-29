@@ -57,7 +57,7 @@ export async function About() {
     {
       icon: GraduationCap,
       label: "Education",
-      value: "BSc Software Engineering (AAIT)",
+      value: "BSc Software Engineering (CTBE)",
     },
   ];
 
