@@ -319,3 +319,33 @@ section[id] {
   border-radius: 1rem;
   border: 1px solid var(--border);
 }
+
+/* Floating Sakura Petals Animation (Kamui Aesthetic) */
+@keyframes sakura-fall {
+  0% {
+    transform: translateY(-5vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(105vh) translateX(120px) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+.sakura-petal {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, rgba(247, 168, 201, 0.9) 0%, rgba(232, 117, 163, 0.6) 60%, rgba(181, 70, 115, 0.2) 100%);
+  border-radius: 14px 2px 14px 2px;
+  box-shadow: 0 0 10px rgba(244, 140, 181, 0.4);
+  filter: blur(0.3px);
+  z-index: 35;
+  animation: sakura-fall 13s linear infinite;
+}
