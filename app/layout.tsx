@@ -10,8 +10,8 @@ import { Hero3DWrapper } from "@/components/three/Hero3DWrapper";
 import { ParticleField } from "@/components/motion/ParticleField";
 import { AmbientBackground } from "@/components/motion/AmbientBackground";
 import { PointerProvider } from "@/hooks/usePointer";
-import { InteractiveParticles } from "@/components/motion/InteractiveParticles";
-import { SakuraPetals } from "@/components/motion/SakuraPetals";
+              <CursorFollower />
+              <InteractiveParticles />
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
