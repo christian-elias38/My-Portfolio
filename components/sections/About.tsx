@@ -38,28 +38,7 @@ export async function About() {
     { label: "Skill Categories", value: categoryCount || 6, suffix: "" },
   ];
 
-  const infoBoxes = [
-    {
-      icon: User,
-      label: "Name",
-      value: profile?.name || "Christian Elias",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: profile?.location || "Addis Ababa, Ethiopia",
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      value: profile?.email || "christianelias102@gmail.com",
-    },
-    {
-      icon: GraduationCap,
-      label: "Education",
-      value: "BSc Software Engineering (CTBE)",
-    },
-  ];
+
 
   return (
     <Section id="about" className="py-24 bg-gradient-to-b from-[#1d0a1b]/90 via-[#270e24]/85 to-[#1d0a1b]/90 border-y border-[#4e1c42]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
