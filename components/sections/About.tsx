@@ -65,6 +65,7 @@ export async function About() {
                 Whether crafting responsive React & Next.js user interfaces, engineering RESTful backends, or developing Flutter mobile applications, I focus on performance, accessibility, and delightful user experiences.
               </p>
               <p className="text-xl font-bold text-[#f48cb5] pt-2 font-serif italic">
+                Christian Elias ♡
               </p>
             </div>
           </FadeIn>
