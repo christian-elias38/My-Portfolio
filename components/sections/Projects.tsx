@@ -154,6 +154,8 @@ const defaultProjects: ProjectExtra[] = [
   }
 ];
 
+import { Projects3DCoverFlow } from "@/components/sections/Projects3DCoverFlow";
+
 export async function Projects() {
   let projects: Project[] = [];
   try {
@@ -171,31 +173,27 @@ export async function Projects() {
   );
 
   return (
-    <section id="projects" className="relative py-20 bg-transparent">
+    <section id="projects" className="relative py-20 bg-transparent overflow-hidden">
       <Container>
         <FadeIn>
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
               <span className="w-6 h-px bg-[#d8769c]/60" />
-              MY PROJECTS
+              SPATIAL SHOWCASE
               <span className="w-6 h-px bg-[#d8769c]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
               Featured <span className="text-[#e875a3]">Projects</span>
             </h2>
             <p className="text-sm sm:text-base text-[#d9b8c9] leading-relaxed font-medium">
-              A selection of my recent work, each built with care, creativity, and attention to detail.
+              Explore my software creations in an interactive 3D spatial cover flow. Click or arrow to navigate through details.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {displayProjects.map((project, i) => (
-            <FadeIn key={project.id} delay={i * 0.08}>
-              <ProjectCard project={project} featured={project.featured} />
-            </FadeIn>
-          ))}
-        </div>
+        <FadeIn delay={0.1}>
+          <Projects3DCoverFlow projects={displayProjects} />
+        </FadeIn>
       </Container>
     </section>
   );
