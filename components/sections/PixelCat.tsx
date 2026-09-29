@@ -4,21 +4,26 @@ import { motion } from "framer-motion";
 
 export function PixelCat() {
   return (
-    <div className="relative flex items-center justify-center p-8 w-full max-w-sm mx-auto">
-      {/* Background radial glow */}
-      <div className="absolute inset-0 bg-linear-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
+    <div className="relative flex flex-col items-center justify-center p-6 w-full max-w-sm mx-auto select-none">
+      {/* Ambient radial glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
 
-      {/* Floating Sparkles around the pixel cat */}
+      {/* Draggable container */}
       <motion.div
-        animate={{ y: [-4, 4, -4], rotate: [0, 10, -10, 0] }}
+        drag
+        dragConstraints={{ left: -140, right: 140, top: -100, bottom: 100 }}
+        dragElastic={0.2}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95, cursor: "grabbing" }}
+        animate={{ y: [-5, 5, -5] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center cursor-grab active:cursor-grabbing p-4 rounded-3xl"
       >
         {/* Sparkle 1 Top Left */}
         <motion.div
           animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-6 -left-6 text-pink-300 text-xl font-bold font-mono"
+          className="absolute -top-4 -left-4 text-[#d8769c] text-xl font-bold font-mono pointer-events-none"
         >
           ✦
         </motion.div>
@@ -27,7 +32,7 @@ export function PixelCat() {
         <motion.div
           animate={{ scale: [1.2, 0.7, 1.2], opacity: [0.8, 0.4, 0.8] }}
           transition={{ duration: 2.4, repeat: Infinity, delay: 0.5, ease: "easeInOut" }}
-          className="absolute -top-4 -right-4 text-purple-300 text-2xl font-bold font-mono"
+          className="absolute -top-2 -right-2 text-[#c084fc] text-2xl font-bold font-mono pointer-events-none"
         >
           ✖
         </motion.div>
@@ -36,28 +41,28 @@ export function PixelCat() {
         <motion.div
           animate={{ scale: [0.9, 1.4, 0.9], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 1.8, repeat: Infinity, delay: 0.2, ease: "easeInOut" }}
-          className="absolute -bottom-4 -left-4 text-pink-400 text-lg font-mono"
+          className="absolute -bottom-2 -left-2 text-[#f472b6] text-lg font-mono pointer-events-none"
         >
-          ✖
+          o
         </motion.div>
 
         {/* Sparkle 4 Bottom Right */}
         <motion.div
           animate={{ scale: [1.1, 0.8, 1.1], opacity: [0.4, 0.9, 0.4] }}
           transition={{ duration: 2.2, repeat: Infinity, delay: 0.8, ease: "easeInOut" }}
-          className="absolute -bottom-6 -right-6 text-purple-400 text-xl font-mono"
+          className="absolute -bottom-4 -right-4 text-[#a855f7] text-xl font-mono pointer-events-none"
         >
           ✦
         </motion.div>
 
-        {/* Pixel Art Cat Canvas / SVG */}
+        {/* Pixel Art Cat SVG */}
         <svg
           width="200"
           height="180"
           viewBox="0 0 20 18"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-48 h-48 drop-shadow-[0_0_25px_rgba(216,120,200,0.6)]"
+          className="w-48 h-48 sm:w-56 sm:h-56 drop-shadow-[0_0_25px_rgba(216,120,200,0.6)]"
           style={{ imageRendering: "pixelated" }}
         >
           {/* Left Ear */}
@@ -107,6 +112,10 @@ export function PixelCat() {
           <rect x="18" y="9" width="1" height="1" fill="#e9d5ff" />
         </svg>
       </motion.div>
+
+      <p className="text-[11px] font-mono text-[#d8769c]/70 text-center mt-2 tracking-widest pointer-events-none uppercase">
+        ✨ Drag me around!
+      </p>
     </div>
   );
 }
