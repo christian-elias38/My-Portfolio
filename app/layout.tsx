@@ -11,6 +11,7 @@ import { ParticleField } from "@/components/motion/ParticleField";
 import { AmbientBackground } from "@/components/motion/AmbientBackground";
 import { PointerProvider } from "@/hooks/usePointer";
 import { InteractiveParticles } from "@/components/motion/InteractiveParticles";
+import { SakuraPetals } from "@/components/motion/SakuraPetals";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <SmoothScroll>
               <CursorFollower />
               <InteractiveParticles />
+              <SakuraPetals />
               <div className="fixed inset-0 -z-50 bg-ambient pointer-events-none" aria-hidden="true" />
               <div className="fixed inset-0 -z-45 pointer-events-none">
                 <AmbientBackground />
