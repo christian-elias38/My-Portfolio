@@ -32,20 +32,20 @@ export async function Education() {
   const displayEducation = educationWithExtras.length > 0 ? educationWithExtras : defaultEducation;
 
   return (
-    <Section id="education" className="py-24 bg-linear-to-b from-[#1a0918]/90 via-[#250e23]/85 to-[#1a0918]/90 border-y border-[#4e1c42]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#d8769c]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#8d3b6a]/15 rounded-full blur-3xl pointer-events-none" />
+    <Section id="education" className="py-24 bg-linear-to-b from-[#1E1518]/90 via-[#24151C]/85 to-[#1E1518]/90 border-y border-[#504234]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#E6C88A]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#C99555]/15 rounded-full blur-3xl pointer-events-none" />
       
       <Container className="max-w-4xl relative z-10">
         <FadeIn>
           <div className="mb-12 text-center max-w-2xl mx-auto">
-            <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
-              <span className="w-6 h-px bg-[#d8769c]/60" />
+            <p className="text-[#E6C88A] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
+              <span className="w-6 h-px bg-[#E6C88A]/60" />
               ACADEMIC BACKGROUND
-              <span className="w-6 h-px bg-[#d8769c]/60" />
+              <span className="w-6 h-px bg-[#E6C88A]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-              Education & <span className="text-[#e875a3]">Qualifications</span>
+              Education & <span className="text-[#E6C88A]">Qualifications</span>
             </h2>
           </div>
         </FadeIn>
@@ -53,28 +53,28 @@ export async function Education() {
         <div className="space-y-6">
           {displayEducation.map((edu, i) => (
             <FadeIn key={edu.id} delay={i * 0.1}>
-              <div className="relative rounded-3xl border border-[#4e203f]/60 bg-[#220f1e]/80 p-6 md:p-8 hover:border-[#8d3b6a] transition-all overflow-hidden shadow-xl">
+              <div className="relative rounded-3xl border border-[#504234]/60 bg-[#24151C]/80 p-6 md:p-8 hover:border-[#C99555] transition-all overflow-hidden shadow-xl">
                 <div className="absolute -right-6 -top-6 opacity-[0.08]">
-                  <GraduationCap className="w-36 h-36 text-[#e875a3]" />
+                  <GraduationCap className="w-36 h-36 text-[#E6C88A]" />
                 </div>
                 <div className="relative flex items-start gap-4">
-                  <div className="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#32122b] border border-[#5d234b] items-center justify-center text-[#e875a3]">
+                  <div className="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#2A1B20] border border-[#504234] items-center justify-center text-[#E6C88A]">
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs text-[#e875a3] font-bold uppercase tracking-widest mb-1 font-mono">
+                    <p className="text-xs text-[#E6C88A] font-bold uppercase tracking-widest mb-1 font-mono">
                       {edu.startYear} — {edu.endYear ?? "Present"}
                     </p>
                     <h3 className="font-extrabold text-xl text-white">{edu.degree}</h3>
-                    <p className="text-sm font-semibold text-[#d8769c] mt-1">
+                    <p className="text-sm font-semibold text-[#E6C88A] mt-1">
                       {edu.institution}
                       {edu.college && ` · ${edu.college}`}
                     </p>
                     {edu.field && (
-                      <p className="text-xs text-[#e0c8d4]/70 mt-1 uppercase tracking-wider font-mono">{edu.field}</p>
+                      <p className="text-xs text-[#CFC1B5]/70 mt-1 uppercase tracking-wider font-mono">{edu.field}</p>
                     )}
                     {edu.description && (
-                      <p className="text-sm text-[#e0c8d4] mt-4 leading-relaxed font-medium">{edu.description}</p>
+                      <p className="text-sm text-[#CFC1B5] mt-4 leading-relaxed font-medium">{edu.description}</p>
                     )}
                   </div>
                 </div>
