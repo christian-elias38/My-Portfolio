@@ -6,7 +6,7 @@ export function PixelCat() {
   return (
     <div className="relative flex flex-col items-center justify-center p-6 w-full max-w-sm mx-auto select-none">
       {/* Ambient radial glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
+      <div className="absolute inset-0 bg-linear-to-tr from-purple-900/30 via-pink-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse-glow" />
 
       {/* Draggable container */}
       <motion.div
