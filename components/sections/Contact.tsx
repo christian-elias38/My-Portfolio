@@ -180,7 +180,7 @@ export function Contact() {
                     <Button
                       type="submit"
                       disabled={form.formState.isSubmitting}
-                      className="w-full rounded-full bg-gradient-to-r from-[#b34972] via-[#d66a94] to-[#b34972] py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-[1.02] transition-transform cursor-pointer flex items-center justify-center gap-2"
+                      className="w-full rounded-full bg-linear-to-r from-[#b34972] via-[#d66a94] to-[#b34972] py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-[1.02] transition-transform cursor-pointer flex items-center justify-center gap-2"
                     >
                       <span>{form.formState.isSubmitting ? "Sending..." : "Send Message"}</span>
                       <Send className="w-4 h-4" />
