@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 interface Petal {
   id: number;
   left: number;
@@ -11,21 +9,16 @@ interface Petal {
   opacity: number;
 }
 
+const petals: Petal[] = Array.from({ length: 18 }, (_, id) => ({
+  id,
+  left: (id * 47 + 13) % 100,
+  size: ((id * 17) % 11) + 8,
+  duration: ((id * 7) % 9) + 10,
+  delay: (id * 13) % 8,
+  opacity: (((id * 7) % 6) + 3) / 10,
+}));
+
 export function SakuraPetals() {
-  const [petals, setPetals] = useState<Petal[]>([]);
-
-  useEffect(() => {
-    const generatedPetals: Petal[] = Array.from({ length: 18 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      size: Math.random() * 10 + 8,
-      duration: Math.random() * 8 + 10,
-      delay: Math.random() * 8,
-      opacity: Math.random() * 0.5 + 0.3,
-    }));
-    setPetals(generatedPetals);
-  }, []);
-
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-20">
       {petals.map((petal) => (
