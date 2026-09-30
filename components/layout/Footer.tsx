@@ -29,17 +29,17 @@ export function Footer() {
   const email = profile?.email || "christianelias102@gmail.com";
 
   return (
-    <footer className="w-full mt-20 py-10 bg-[#180915]/80 border-t border-[#4e203f]/60 backdrop-blur-md">
+    <footer className="w-full mt-20 py-10 bg-[#1E1518]/80 border-t border-[#504234]/60 backdrop-blur-md">
       <Container className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs font-medium text-[#e0c8d4] text-center sm:text-left">
+        <p className="text-xs font-medium text-[#CFC1B5] text-center sm:text-left">
           © {new Date().getFullYear()} <span className="text-white font-bold">{profile?.name ?? "Christian Elias"}</span>. All rights reserved.
         </p>
 
-        <div className="flex items-center gap-4 text-[#f4b3cf]">
+        <div className="flex items-center gap-4 text-[#F3E7D3]">
           <a
             href={`mailto:${email}`}
             aria-label="Email"
-            className="p-2.5 rounded-full bg-[#261021] border border-[#522144] hover:text-white hover:border-[#d66a94] transition-colors"
+            className="p-2.5 rounded-full bg-[#24151C] border border-[#504234] hover:text-white hover:border-[#E6C88A] transition-colors"
           >
             <Mail className="w-4 h-4" />
           </a>
@@ -48,7 +48,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="p-2.5 rounded-full bg-[#261021] border border-[#522144] hover:text-white hover:border-[#d66a94] transition-colors"
+            className="p-2.5 rounded-full bg-[#24151C] border border-[#504234] hover:text-white hover:border-[#E6C88A] transition-colors"
           >
             <SiGithub size={15} />
           </a>
@@ -57,7 +57,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="p-2.5 rounded-full bg-[#261021] border border-[#522144] hover:text-white hover:border-[#d66a94] transition-colors"
+            className="p-2.5 rounded-full bg-[#24151C] border border-[#504234] hover:text-white hover:border-[#E6C88A] transition-colors"
           >
             <LinkedinIcon size={15} />
           </a>
