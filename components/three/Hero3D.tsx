@@ -11,8 +11,8 @@ const BRANCHES = 4;
 const SPIN = 1.1;
 const RANDOMNESS = 0.45;
 const RANDOMNESS_POWER = 3;
-const INSIDE_COLOR = "#fde2ec";
-const OUTSIDE_COLOR = "#4a1a42";
+const INSIDE_COLOR = "#F7F1E8";
+const OUTSIDE_COLOR = "#504234";
 
 function useGalaxyGeometry() {
   return useMemo(() => {
