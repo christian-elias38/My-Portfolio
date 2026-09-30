@@ -49,12 +49,12 @@ export function NavbarClient({ name }: { name?: string | null }) {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-xl bg-[#190a16]/85 border-b border-[#4e203f]/60 shadow-lg" : "bg-transparent"
+        scrolled ? "backdrop-blur-xl bg-[#1E1518]/85 border-b border-[#504234]/60 shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-extrabold text-xl tracking-tight text-white hover:text-[#f48cb5] transition-colors flex items-center gap-2">
-          <span className="text-[#e875a3]">❖</span>
+        <Link href="/" className="font-extrabold text-xl tracking-tight text-white hover:text-[#F0D9A5] transition-colors flex items-center gap-2">
+          <span className="text-[#E6C88A]">❖</span>
           <span>{name || "Christian Elias"}</span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-semibold">
@@ -65,12 +65,12 @@ export function NavbarClient({ name }: { name?: string | null }) {
                 key={l.href}
                 href={l.href}
                 className={`relative transition-colors ${
-                  isActive ? "text-[#e875a3]" : "text-[#e0c8d4]/80 hover:text-white"
+                  isActive ? "text-[#E6C88A]" : "text-[#CFC1B5]/80 hover:text-[#F0D9A5]"
                 }`}
               >
                 {l.label}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-[#e875a3] rounded-full" />
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-[#E6C88A] rounded-full" />
                 )}
               </Link>
             );
@@ -79,14 +79,14 @@ export function NavbarClient({ name }: { name?: string | null }) {
         <div className="flex items-center gap-3">
           <CommandPalette />
           <Sheet>
-            <SheetTrigger className="md:hidden inline-flex items-center justify-center rounded-md border border-[#4e203f] h-9 w-9 bg-[#220f1e] text-[#f4b3cf] hover:text-white transition-colors" aria-label="Open menu">
+            <SheetTrigger className="md:hidden inline-flex items-center justify-center rounded-md border border-[#504234] h-9 w-9 bg-[#24151C] text-[#F3E7D3] hover:text-white transition-colors" aria-label="Open menu">
               <Menu className="h-4 w-4" />
             </SheetTrigger>
-            <SheetContent side="right" showCloseButton className="bg-[#190a16] border-[#4e203f] text-white">
+            <SheetContent side="right" showCloseButton className="bg-[#1E1518] border-[#504234] text-white">
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <div className="mt-8 flex flex-col gap-4 text-lg">
                 {links.map((l) => (
-                  <Link key={l.href} href={l.href} className="rounded-lg px-3 py-2 text-[#e0c8d4] hover:text-[#e875a3] hover:bg-[#251020] transition-colors">
+                  <Link key={l.href} href={l.href} className="rounded-lg px-3 py-2 text-[#CFC1B5] hover:text-[#E6C88A] hover:bg-[#24151C] transition-colors">
                     {l.label}
                   </Link>
                 ))}
