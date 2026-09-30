@@ -26,7 +26,7 @@ export function ExperienceTimeline({ experience }: { experience: ExperienceWithE
               className="relative"
             >
               {/* Year badge node on vertical line */}
-              <span className="absolute -left-11 sm:-left-11.5 top-1.5 flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#b34972] to-[#d8759c] text-[11px] font-black text-white shadow-md border border-[#f4b3cf]/40">
+              <span className="absolute -left-11 sm:-left-11.5 top-1.5 flex items-center justify-center w-9 h-9 rounded-full bg-linear-to-r from-[#b34972] to-[#d8759c] text-[11px] font-black text-white shadow-md border border-[#f4b3cf]/40">
                 {year}
               </span>
 
