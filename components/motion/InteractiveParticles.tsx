@@ -16,11 +16,11 @@ interface Particle {
 }
 
 const COLORS = [
-  "rgba(244, 169, 198, ", // soft pink (#f4a9c6)
-  "rgba(226, 120, 159, ", // dusty rose (#e2789f)
-  "rgba(255, 203, 224, ", // blush pink (#ffcbe0)
-  "rgba(197, 101, 141, ", // warm plum (#c5658d)
-  "rgba(168, 85, 247, ",  // purple glow (#a855f7)
+  "rgba(230, 200, 138, ", // champagne gold (#E6C88A)
+  "rgba(230, 200, 138, ", // champagne gold (#E6C88A)
+  "rgba(240, 217, 165, ", // blush pink (#ffcbe0)
+  "rgba(201, 149, 85, ", // bronze (#C99555)
+  "rgba(217, 168, 91, ",  // purple glow (#C99555)
 ];
 
 export function InteractiveParticles() {
@@ -154,7 +154,7 @@ export function InteractiveParticles() {
             ctx.beginPath();
             ctx.moveTo(renderX, renderY);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(226, 120, 159, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(230, 200, 138, ${lineAlpha})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
