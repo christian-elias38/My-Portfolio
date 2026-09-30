@@ -80,7 +80,7 @@ export async function Hero() {
                 <Magnetic>
                   <Link
                     href="#projects"
-                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#b34972] via-[#d66a94] to-[#b34972] px-8 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-105 transition-all duration-300"
+                    className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#b34972] via-[#d66a94] to-[#b34972] px-8 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-pink-950/50 hover:scale-105 transition-all duration-300"
                   >
                     Discover My Creations →
                   </Link>
