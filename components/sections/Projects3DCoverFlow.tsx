@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { SiGithub } from "@icons-pack/react-simple-icons";
@@ -25,9 +25,6 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectExtra | null>(null);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const lastWheelTime = useRef(0);
-
   const total = projects.length;
 
   const handlePrev = () => {
@@ -40,19 +37,6 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
 
   const handleSelectCard = (index: number) => {
     setActiveIndex(index);
-  };
-
-  // Effortless Mouse Wheel Scroll Handler
-  const handleWheel = (e: React.WheelEvent) => {
-    const now = Date.now();
-    if (now - lastWheelTime.current < 400) return; // 400ms throttle for smooth scrolling
-    lastWheelTime.current = now;
-
-    if (e.deltaY > 0 || e.deltaX > 0) {
-      handleNext();
-    } else if (e.deltaY < 0 || e.deltaX < 0) {
-      handlePrev();
-    }
   };
 
   const activeProject = projects[activeIndex];
@@ -98,30 +82,30 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
 
   return (
     <div className="relative w-full max-w-6xl mx-auto py-4">
-      {/* 1. Spatial Apple Vision Pro Header Bar */}
+      {/* 1. Header Bar with Explicit Arrow Controls */}
       <div className="mb-6 flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-[#1e0a1b]/80 border border-[#522144]/60 backdrop-blur-xl shadow-xl max-w-3xl mx-auto text-xs text-[#e0c8d4]">
-        {/* Left Icons */}
+        {/* Left Control Buttons */}
         <div className="flex items-center gap-2">
           <button className="p-1.5 rounded-full hover:bg-[#3d1833] text-[#d8769c] transition-colors" title="Controls">
             <SlidersHorizontal className="w-3.5 h-3.5" />
           </button>
-          <button onClick={handlePrev} className="p-1.5 rounded-full hover:bg-[#3d1833] text-[#e875a3] transition-colors" title="Previous Project">
+          <button onClick={handlePrev} className="p-1.5 rounded-full bg-[#2d1229] hover:bg-[#4a1c43] text-[#e875a3] hover:text-white transition-all border border-[#522144]" title="Previous Project">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button onClick={handleNext} className="p-1.5 rounded-full hover:bg-[#3d1833] text-[#e875a3] transition-colors" title="Next Project">
+          <button onClick={handleNext} className="p-1.5 rounded-full bg-[#2d1229] hover:bg-[#4a1c43] text-[#e875a3] hover:text-white transition-all border border-[#522144]" title="Next Project">
             <ChevronRight className="w-4 h-4" />
           </button>
           <span className="font-mono text-[11px] font-bold text-[#f48cb5] px-1">AA</span>
         </div>
 
-        {/* Center Search Pill */}
+        {/* Center Title Explorer */}
         <div className="flex-1 flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#120611]/90 border border-[#4e1c42]/60 text-[#f4b3cf] font-mono text-xs shadow-inner max-w-md">
           <Lock className="w-3 h-3 text-[#e875a3]" />
           <span className="truncate font-semibold tracking-wide">portfolio.explorer / {activeProject.title}</span>
           <Mic className="w-3 h-3 text-[#d8769c]/70 ml-auto shrink-0" />
         </div>
 
-        {/* Right Icons */}
+        {/* Right Action Icons */}
         <div className="flex items-center gap-2">
           <button className="p-1.5 rounded-full hover:bg-[#3d1833] text-[#d8769c] transition-colors" title="Add">
             <Plus className="w-3.5 h-3.5" />
@@ -135,36 +119,11 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         </div>
       </div>
 
-      {/* 2. 3D Spatial Cover Flow Stage Container (Enlarged Card Size + Effortless Wheel & Cursor Scroll) */}
+      {/* 2. 3D Spatial Cover Flow Stage Container (Strict Manual Scroll + Fast Crisp Transition) */}
       <div
-        ref={containerRef}
-        onWheel={handleWheel}
-        className="relative w-full h-[610px] sm:h-[650px] flex items-center justify-center overflow-hidden py-4 perspective-1000 group/stage"
+        className="relative w-full h-152.5 sm:h-162.5 flex items-center justify-center overflow-hidden py-4 perspective-1000"
         style={{ perspective: "1200px" }}
       >
-        {/* Left Effortless Cursor Scroll Zone */}
-        <div
-          onClick={handlePrev}
-          className="absolute left-0 top-0 w-1/5 h-full z-45 cursor-pointer flex items-center justify-start pl-4 opacity-0 group-hover/stage:opacity-100 transition-opacity"
-          title="Scroll Left"
-        >
-          <div className="p-3 rounded-full bg-[#2a0e26]/80 border border-[#e875a3]/50 text-[#f48cb5] backdrop-blur-md shadow-xl hover:scale-110 transition-transform">
-            <ChevronLeft className="w-6 h-6" />
-          </div>
-        </div>
-
-        {/* Right Effortless Cursor Scroll Zone */}
-        <div
-          onClick={handleNext}
-          className="absolute right-0 top-0 w-1/5 h-full z-45 cursor-pointer flex items-center justify-end pr-4 opacity-0 group-hover/stage:opacity-100 transition-opacity"
-          title="Scroll Right"
-        >
-          <div className="p-3 rounded-full bg-[#2a0e26]/80 border border-[#e875a3]/50 text-[#f48cb5] backdrop-blur-md shadow-xl hover:scale-110 transition-transform">
-            <ChevronRight className="w-6 h-6" />
-          </div>
-        </div>
-
-        {/* Stage Active & Side Cards */}
         <div className="relative w-full max-w-lg sm:max-w-xl h-full flex items-center justify-center">
           {projects.map((proj, index) => {
             const offset = index - activeIndex;
@@ -219,15 +178,16 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 26,
+                  stiffness: 480,
+                  damping: 32,
+                  mass: 0.5,
                 }}
                 style={{
                   transformStyle: "preserve-3d",
                 }}
-                className={`absolute inset-0 w-full rounded-3xl cursor-pointer select-none transition-shadow duration-300 ${
+                className={`absolute inset-0 w-full rounded-3xl cursor-pointer select-none transition-shadow duration-200 ${
                   isActive
-                    ? "bg-gradient-to-b from-[#250d24]/95 via-[#1e0a1b]/95 to-[#170715]/95 border-2 border-[#e875a3]/60 shadow-[0_25px_70px_rgba(232,117,163,0.3)] backdrop-blur-2xl"
+                    ? "bg-linear-to-b from-[#250d24]/95 via-[#1e0a1b]/95 to-[#170715]/95 border-2 border-[#e875a3]/60 shadow-[0_25px_70px_rgba(232,117,163,0.3)] backdrop-blur-2xl"
                     : "bg-[#1d0a1a]/85 border border-[#4e1c42]/50 shadow-xl backdrop-blur-md"
                 } overflow-hidden flex flex-col justify-between`}
               >
@@ -253,9 +213,9 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                   </button>
                 </div>
 
-                {/* Card Media Preview (Larger Image View) */}
+                {/* Card Media Preview */}
                 {proj.imageUrl && (
-                  <div className="relative aspect-16/9 bg-[#110510] overflow-hidden border-b border-[#4e1c42]/40 shrink-0">
+                  <div className="relative aspect-video bg-[#110510] overflow-hidden border-b border-[#4e1c42]/40 shrink-0">
                     <Image
                       src={proj.imageUrl}
                       alt={proj.title}
@@ -263,7 +223,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                       sizes="520px"
                       className={`object-cover ${isMobileApp ? "object-contain p-4 bg-[#150714]" : "object-cover object-top"}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1b0919] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#1b0919] via-transparent to-transparent" />
                   </div>
                 )}
 
@@ -314,7 +274,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#b34972] to-[#d66a94] text-white text-xs font-extrabold shadow-md hover:scale-102 transition-all"
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-[#b34972] to-[#d66a94] text-white text-xs font-extrabold shadow-md hover:scale-102 transition-all"
                         >
                           <span>Live Demo</span>
                           <SquareArrowOutUpRight className="w-3.5 h-3.5" />
@@ -337,14 +297,14 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         </div>
       </div>
 
-      {/* 3. Minimal Dots Pagination below Stage (Rectangle box removed as requested) */}
+      {/* 3. Explicit Dots Pagination */}
       <div className="mt-4 flex items-center justify-center gap-2">
         {projects.map((_, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2.5 rounded-full transition-all duration-200 ${
               i === activeIndex ? "w-8 bg-[#e875a3]" : "w-2.5 bg-[#522144] hover:bg-[#8d3b6a]"
             }`}
           />
@@ -363,7 +323,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
             </p>
 
             {selectedProject.imageUrl && (
-              <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-[#10050e] border border-[#4d213d] mb-4">
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#10050e] border border-[#4d213d] mb-4">
                 <Image src={selectedProject.imageUrl} alt={selectedProject.title} fill className="object-contain p-2" />
               </div>
             )}
@@ -407,7 +367,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                   href={(selectedProject.liveUrl || selectedProject.githubUrl) ?? undefined}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-[#b34972] to-[#d66a94] text-xs font-extrabold text-white shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-linear-to-r from-[#b34972] to-[#d66a94] text-xs font-extrabold text-white shadow-lg"
                 >
                   <span>Launch Application</span>
                   <SquareArrowOutUpRight className="w-3.5 h-3.5" />
