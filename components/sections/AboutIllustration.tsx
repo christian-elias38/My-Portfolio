@@ -2,7 +2,7 @@ export function AboutIllustration() {
   return (
     <svg
       viewBox="0 0 200 200"
-      className="w-full max-w-[220px] mx-auto"
+      className="w-full max-w-55 mx-auto"
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle cx="100" cy="100" r="90" className="fill-muted/30" />
