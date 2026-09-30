@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { ProjectCard } from "@/components/sections/ProjectCard";
 import { Container } from "@/components/ui/primitives/Container";
 import type { Project } from "@prisma/client";
 
@@ -177,13 +176,13 @@ export async function Projects() {
       <Container>
         <FadeIn>
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <p className="text-[#d8769c] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
-              <span className="w-6 h-px bg-[#d8769c]/60" />
+            <p className="text-[#E6C88A] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
+              <span className="w-6 h-px bg-[#E6C88A]/60" />
               SPATIAL SHOWCASE
-              <span className="w-6 h-px bg-[#d8769c]/60" />
+              <span className="w-6 h-px bg-[#E6C88A]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-              Featured <span className="text-[#e875a3]">Projects</span>
+              Featured <span className="text-[#E6C88A]">Projects</span>
             </h2>
           </div>
         </FadeIn>
