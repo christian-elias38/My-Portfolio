@@ -32,7 +32,7 @@ export async function Education() {
   const displayEducation = educationWithExtras.length > 0 ? educationWithExtras : defaultEducation;
 
   return (
-    <Section id="education" className="py-24 bg-gradient-to-b from-[#1a0918]/90 via-[#250e23]/85 to-[#1a0918]/90 border-y border-[#4e1c42]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
+    <Section id="education" className="py-24 bg-linear-to-b from-[#1a0918]/90 via-[#250e23]/85 to-[#1a0918]/90 border-y border-[#4e1c42]/50 backdrop-blur-md shadow-2xl relative overflow-hidden">
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#d8769c]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#8d3b6a]/15 rounded-full blur-3xl pointer-events-none" />
       
