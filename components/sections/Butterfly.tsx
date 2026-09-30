@@ -64,7 +64,7 @@ export function Butterfly() {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-center justify-center p-8 w-full max-w-md h-[340px] mx-auto select-none overflow-visible"
+      className="relative flex items-center justify-center p-8 w-full max-w-md h-85 mx-auto select-none overflow-visible"
     >
       {/* Soft magical ambient glow */}
       <div className="absolute inset-0 bg-radial from-[#e875a3]/20 via-[#b34972]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -201,7 +201,7 @@ export function Butterfly() {
               <div className="w-4 h-6 border-t-2 border-r-2 border-[#fce4ee] rounded-tr-full transform rotate-12" />
             </div>
             {/* Body Segment */}
-            <div className="w-3.5 h-16 bg-gradient-to-b from-[#fce4ee] via-[#e875a3] to-[#4a1c3f] rounded-full shadow-lg border border-white/40" />
+            <div className="w-3.5 h-16 bg-linear-to-b from-[#fce4ee] via-[#e875a3] to-[#4a1c3f] rounded-full shadow-lg border border-white/40" />
           </div>
         </div>
       </motion.div>
