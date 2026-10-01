@@ -1,114 +1,108 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export function Butterfly() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Motion values for smooth position following
+  const butterflyRef = useRef<HTMLDivElement>(null);
+
+  // Motion values for position tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth springs for natural organic movement
-  const springX = useSpring(mouseX, { stiffness: 120, damping: 18 });
-  const springY = useSpring(mouseY, { stiffness: 120, damping: 18 });
+  // Smooth physics springs for responsive movement
+  const springX = useSpring(mouseX, { stiffness: 140, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 140, damping: 20 });
 
   const [rotation, setRotation] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  const lastPos = useRef({ x: 0, y: 0 });
 
-    let lastX = 0;
-    let lastY = 0;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!butterflyRef.current) return;
+    const rect = butterflyRef.current.getBoundingClientRect();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
+    // Relative offset from butterfly center
+    const relativeX = e.clientX - (rect.left + rect.width / 2);
+    const relativeY = e.clientY - (rect.top + rect.height / 2);
 
-      // Calculate relative coordinates within the container
-      const relativeX = e.clientX - (rect.left + rect.width / 2);
-      const relativeY = e.clientY - (rect.top + rect.height / 2);
+    // Limit position range for natural localized movement
+    const clampedX = Math.max(-90, Math.min(90, relativeX));
+    const clampedY = Math.max(-80, Math.min(80, relativeY));
 
-      // Bound movement within container limits
-      const clampedX = Math.max(-140, Math.min(140, relativeX));
-      const clampedY = Math.max(-120, Math.min(120, relativeY));
+    // Turn butterfly towards cursor direction
+    const dx = clampedX - lastPos.current.x;
+    const dy = clampedY - lastPos.current.y;
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      setRotation(angle);
+    }
 
-      // Calculate movement angle for realistic turning direction
-      const dx = clampedX - lastX;
-      const dy = clampedY - lastY;
-      if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-        setRotation(angle);
-      }
+    lastPos.current = { x: clampedX, y: clampedY };
+    mouseX.set(clampedX);
+    mouseY.set(clampedY);
+  };
 
-      lastX = clampedX;
-      lastY = clampedY;
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
-      mouseX.set(clampedX);
-      mouseY.set(clampedY);
-      setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsHovered(false);
-      // Gently glide back to center when cursor leaves
-      mouseX.set(0);
-      mouseY.set(0);
-      setRotation(0);
-    };
-
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
-    return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [mouseX, mouseY]);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    // Instantly return to resting center position when cursor leaves
+    mouseX.set(0);
+    mouseY.set(0);
+    setRotation(0);
+    lastPos.current = { x: 0, y: 0 };
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative flex items-center justify-center p-8 w-full max-w-md h-85 mx-auto select-none overflow-visible"
-    >
-      {/* Soft magical ambient glow */}
-      <div className="absolute inset-0 bg-radial from-[#E6C88A]/20 via-[#C99555]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+    <div className="relative flex items-center justify-center p-6 w-full max-w-md h-80 mx-auto select-none overflow-visible">
+      {/* Soft background ambient glow */}
+      <div className="absolute inset-0 bg-radial from-[#E6C88A]/15 via-[#C99555]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 
       {/* Floating Sparkles in Background */}
       <motion.div
-        animate={{ opacity: [0.4, 0.9, 0.4], scale: [0.9, 1.2, 0.9] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ opacity: isHovered ? [0.4, 0.9, 0.4] : 0.3, scale: isHovered ? [0.9, 1.2, 0.9] : 1 }}
+        transition={{ duration: 3, repeat: isHovered ? Infinity : 0, ease: "easeInOut" }}
         className="absolute top-8 left-12 text-[#F0D9A5] text-sm pointer-events-none"
       >
         ✨
       </motion.div>
       <motion.div
-        animate={{ opacity: [0.3, 0.8, 0.3], scale: [1, 1.3, 1] }}
-        transition={{ duration: 3.5, repeat: Infinity, delay: 0.5, ease: "easeInOut" }}
+        animate={{ opacity: isHovered ? [0.3, 0.8, 0.3] : 0.3, scale: isHovered ? [1, 1.3, 1] : 1 }}
+        transition={{ duration: 3.5, repeat: isHovered ? Infinity : 0, delay: 0.5, ease: "easeInOut" }}
         className="absolute bottom-10 right-10 text-[#E6C88A] text-base pointer-events-none"
       >
         ✦
       </motion.div>
 
-      {/* Interactive Butterfly */}
+      {/* Interactive Butterfly (ONLY moves when cursor is directly on top of it) */}
       <motion.div
+        ref={butterflyRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         style={{
-          x: springX,
-          y: springY,
-          rotate: rotation,
+          x: isHovered ? springX : 0,
+          y: isHovered ? springY : 0,
+          rotate: isHovered ? rotation : 0,
         }}
         animate={{
-          y: isHovered ? [0, -6, 0] : [-8, 8, -8],
+          y: isHovered ? [0, -4, 0] : 0,
         }}
         transition={{
-          y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
+          y: { duration: 2, repeat: isHovered ? Infinity : 0, ease: "easeInOut" },
         }}
-        className="relative cursor-pointer z-20 flex items-center justify-center"
+        className="relative cursor-pointer z-20 flex items-center justify-center p-6 rounded-full group"
       >
         {/* Glow behind Butterfly */}
-        <div className="absolute inset-0 bg-[#E6C88A]/40 rounded-full blur-xl scale-125" />
+        <div
+          className={`absolute inset-0 bg-[#E6C88A]/40 rounded-full blur-xl scale-125 transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-40"
+          }`}
+        />
 
         {/* Butterfly SVG with Animated Flapping Wings */}
         <div className="relative w-44 h-44 sm:w-52 sm:h-52 drop-shadow-[0_0_25px_rgba(230,200,138,0.7)] flex items-center justify-center">
@@ -119,8 +113,8 @@ export function Butterfly() {
             viewBox="0 0 100 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            animate={{ rotateY: [0, 65, 0] }}
-            transition={{ duration: 0.45, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ rotateY: isHovered ? [0, 65, 0] : 15 }}
+            transition={{ duration: 0.45, repeat: isHovered ? Infinity : 0, ease: "easeInOut" }}
             style={{ transformOrigin: "right center" }}
             className="absolute right-1/2 top-0"
           >
@@ -163,8 +157,8 @@ export function Butterfly() {
             viewBox="0 0 100 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            animate={{ rotateY: [0, -65, 0] }}
-            transition={{ duration: 0.45, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ rotateY: isHovered ? [0, -65, 0] : -15 }}
+            transition={{ duration: 0.45, repeat: isHovered ? Infinity : 0, ease: "easeInOut" }}
             style={{ transformOrigin: "left center" }}
             className="absolute left-1/2 top-0"
           >
