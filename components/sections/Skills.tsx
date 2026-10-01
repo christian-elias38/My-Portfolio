@@ -37,7 +37,7 @@ export async function Skills() {
   let skills: Skill[] = [];
   try {
     skills = await prisma.skill.findMany({ orderBy: { category: "asc" } });
-  } catch {}
+  } catch { }
 
   const list = skills.length > 0 ? skills : (defaultSkills as unknown as Skill[]);
 
@@ -61,7 +61,7 @@ export async function Skills() {
               Tools I Work <span className="text-[#E6C88A]">With</span>
             </h2>
             <p className="text-sm sm:text-base text-[#CFC1B5] leading-relaxed font-medium">
-              My toolkit for crafting calm, thoughtful, and beautifully detailed digital experiences.
+              My toolkit for crafting thoughtful, and detailed digital experiences.
             </p>
           </div>
         </FadeIn>
