@@ -43,7 +43,7 @@ export async function About() {
           <div className="mb-12">
             <p className="text-[#E6C88A] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center gap-2">
               <span className="w-6 h-px bg-[#E6C88A]/60" />
-              ABOUT ME
+
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               A little about <span className="text-[#E6C88A]">me</span>
@@ -61,7 +61,7 @@ export async function About() {
                 Whether crafting responsive React & Next.js user interfaces, engineering RESTful backends, or developing Flutter mobile applications, I focus on performance, accessibility, and delightful user experiences.
               </p>
               <p className="text-xl font-bold text-[#F0D9A5] pt-2 font-serif italic">
-                Christian Elias ♡
+
               </p>
             </div>
           </FadeIn>
