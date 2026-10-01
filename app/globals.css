@@ -352,3 +352,25 @@ section[id] {
   z-index: 35;
   animation: sakura-fall 13s linear infinite;
 }
+
+/* Custom Scrollbar for Modal and Expanded Containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30, 21, 24, 0.8);
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(201, 149, 85, 0.5);
+  border-radius: 8px;
+  border: 2px solid rgba(30, 21, 24, 0.8);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 200, 138, 0.8);
+}
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 149, 85, 0.5) rgba(30, 21, 24, 0.8);
+  overscroll-behavior: contain;
+}
