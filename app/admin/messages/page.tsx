@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mail, Phone, Calendar, RefreshCw } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Mail, Phone, Calendar, RefreshCw, LogOut } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/primitives/GlassCard";
 import { cn } from "@/lib/utils";
@@ -18,16 +19,30 @@ interface Message {
 export default function AdminMessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   function fetchMessages() {
     setLoading(true);
+    setError("");
     fetch("/api/contact")
-      .then((res) => res.json())
-      .then((data) => {
+      .then(async (res) => {
+        if (res.status === 401) {
+          router.replace("/admin/login?next=/admin/messages");
+          return;
+        }
+        const data = await res.json();
         if (Array.isArray(data)) setMessages(data);
+        else setError(data?.error || "Could not load messages");
       })
-      .catch(console.error)
+      .catch(() => setError("Could not load messages"))
       .finally(() => setLoading(false));
+  }
+
+  async function logout() {
+    await fetch("/api/admin/logout", { method: "POST" });
+    router.replace("/admin/login");
+    router.refresh();
   }
 
   useEffect(() => {
@@ -45,11 +60,19 @@ export default function AdminMessagesPage() {
           <h1 className="text-2xl font-bold text-foreground">Received Messages</h1>
           <p className="text-sm text-muted-foreground">View and respond to contact form inquiries.</p>
         </div>
-        <Button variant="outline" size="sm" onClick={fetchMessages} disabled={loading} className="gap-2">
-          <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
-          Refresh
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={fetchMessages} disabled={loading} className="gap-2">
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </Button>
+          <Button variant="outline" size="sm" onClick={logout} className="gap-2">
+            <LogOut className="w-4 h-4" />
+            Log out
+          </Button>
+        </div>
       </div>
+
+      {error && <p className="mb-4 text-sm text-red-400">{error}</p>}
 
       {messages.length === 0 ? (
         <GlassCard className="p-8 text-center text-muted-foreground">
