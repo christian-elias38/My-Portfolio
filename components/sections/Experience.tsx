@@ -17,7 +17,7 @@ const defaultExperience: ExperienceModel[] = [
       "Implemented structured APIs and database models using Prisma and PostgreSQL.",
       "Optimized client-side web performance and user experience accessibility.",
     ],
-    startDate: new Date("2024-01-01"),
+    startDate: new Date("2025-01-01"),
     endDate: null,
   },
   {
@@ -32,7 +32,7 @@ const defaultExperience: ExperienceModel[] = [
       "Developed Python pathfinding algorithms and interactive maze solvers.",
       "Engineered systems-level software tools with Git version control.",
     ],
-    startDate: new Date("2023-09-01"),
+    startDate: new Date("2025-06-01"),
     endDate: null,
   },
 ];
