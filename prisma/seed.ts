@@ -67,7 +67,7 @@ await prisma.education.create({
     college: 'Addis Ababa Institute of Technology (AAIT)',
     degree: 'BSc in Software Engineering',
     field: 'Software Engineering',
-    startYear: 2023,
+    startYear: 2025,
     endYear: null,
     description:
       "Currently pursuing a Bachelor's degree in Software Engineering with a curriculum spanning Data Structures and Algorithms, Database Systems, Software Engineering principles, Computer Networking, Operating Systems, Human-Computer Interaction, and Full-Stack Development. Coursework blends theoretical foundations with hands-on project work, including collaborative team-based software builds, technical documentation, and iterative development practices. Actively engaged in extracurricular technical projects alongside coursework, applying classroom concepts to real, deployed applications.",
@@ -92,7 +92,7 @@ await prisma.experience.create({
       'Contributed to a Flutter-based mobile application, building admin panel and role-based access control features.',
       'Completed a cybersecurity assignment performing penetration testing and vulnerability analysis (XSS, SQL injection) on a test application, documenting findings with CVSS scoring and OWASP classification.',
     ],
-    startDate: new Date('2024-01-01'),
+    startDate: new Date('2025-01-01'),
     endDate: null,
   },
 })
