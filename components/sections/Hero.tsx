@@ -17,7 +17,7 @@ export async function Hero() {
   let profile: Profile | null = null;
   try {
     profile = await prisma.profile.findFirst();
-  } catch {}
+  } catch { }
 
   const profileSrc = profile?.profileImage || "/profile.jpg";
   const name = profile?.name || "Christian Elias";
@@ -56,10 +56,10 @@ export async function Hero() {
                 WELCOME TO MY PORTFOLIO
               </p>
             </FadeIn>
-            
+
             <FadeIn delay={0.1}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-3 leading-[1.02]">
-                Hi there, I&apos;m <span className="text-[#E6C88A] font-black">{profile?.name ?? "Christian Elias"}</span>
+                Hi, I&apos;m <span className="text-[#E6C88A] font-black">{profile?.name ?? "Christian Elias"}</span>
               </h1>
             </FadeIn>
 
