@@ -35,14 +35,14 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
     targetPosRef.current = targetPos;
   }, [targetPos]);
 
-  // Smooth lerp animation loop for damped cursor movement horizontal scroll ("not so fast")
+  // Smooth lerp animation loop for gentle card transitions
   useEffect(() => {
     let frameId: number;
     const loop = () => {
       const diff = targetPosRef.current - currentPosRef.current;
       if (Math.abs(diff) > 0.0005) {
-        // Controlled lerp factor (0.05) creates smooth, gentle horizontal movement tracking cursor direction
-        currentPosRef.current += diff * 0.05;
+        // Controlled lerp factor creates smooth, gentle movement between cards
+        currentPosRef.current += diff * 0.12;
         setCurrentPos(currentPosRef.current);
       }
       frameId = requestAnimationFrame(loop);
@@ -51,37 +51,54 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
     return () => cancelAnimationFrame(frameId);
   }, []);
 
-  // Cursor movement handler across the stage container
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || total <= 1) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    // Map cursor X position to project index range (with 5% side margins for natural alignment)
-    const paddedRatio = Math.max(0, Math.min(1, (mouseX - rect.width * 0.05) / (rect.width * 0.9)));
-    const newTarget = paddedRatio * (total - 1);
-    targetPosRef.current = newTarget;
-    setTargetPos(newTarget);
-  };
-
-  // Horizontal wheel scroll handler
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    const delta = e.deltaX !== 0 ? e.deltaX : e.deltaY;
-    const sensitivity = 0.0015;
-    const next = Math.max(0, Math.min(total - 1, targetPosRef.current + delta * sensitivity));
+  // Navigation only happens on purpose: arrows, dots, keyboard, or drag/swipe.
+  const goTo = (index: number) => {
+    const next = Math.max(0, Math.min(total - 1, index));
     targetPosRef.current = next;
     setTargetPos(next);
   };
 
-  const handlePrev = () => {
-    const next = Math.max(0, Math.floor(currentPosRef.current - 0.5));
-    targetPosRef.current = next;
-    setTargetPos(next);
+  const handlePrev = () => goTo(Math.round(targetPosRef.current) - 1);
+  const handleNext = () => goTo(Math.round(targetPosRef.current) + 1);
+
+  // Drag / swipe support (does not hijack the mouse wheel or the page scroll)
+  const dragStartX = useRef<number | null>(null);
+  const didDrag = useRef(false);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragStartX.current = e.clientX;
+    didDrag.current = false;
   };
 
-  const handleNext = () => {
-    const next = Math.min(total - 1, Math.ceil(currentPosRef.current + 0.5));
-    targetPosRef.current = next;
-    setTargetPos(next);
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartX.current === null) return;
+    const dx = e.clientX - dragStartX.current;
+    dragStartX.current = null;
+    if (Math.abs(dx) > 60) {
+      didDrag.current = true;
+      if (dx < 0) handleNext();
+      else handlePrev();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      handlePrev();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      handleNext();
+    }
+  };
+
+  // Active card opens the details; a side card just moves to the center.
+  const handleCardClick = (index: number) => {
+    if (didDrag.current) {
+      didDrag.current = false;
+      return;
+    }
+    if (index === Math.round(targetPosRef.current)) handleOpenProject(index);
+    else goTo(index);
   };
 
   const handleOpenProject = (index: number) => {
@@ -164,7 +181,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         {/* Right Cursor Navigation Prompt */}
         <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-[#E6C88A]">
           <MousePointer2 className="w-3.5 h-3.5 animate-pulse text-[#E6C88A]" />
-          <span>Move cursor left/right to scroll spatial view</span>
+          <span>Use arrows, drag or swipe to browse</span>
         </div>
       </div>
 
@@ -194,9 +211,11 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         {/* Interactive 3D Spatial Stage (Sensing cursor movement) */}
         <div
           ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onWheel={handleWheel}
-          className="relative w-full h-175 sm:h-190 md:h-205 flex items-center justify-center overflow-hidden py-4 select-none touch-pan-x"
+          tabIndex={0}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onKeyDown={handleKeyDown}
+          className="relative w-full h-175 sm:h-190 md:h-205 flex items-center justify-center overflow-hidden py-4 select-none touch-pan-y outline-none"
           style={{ perspective: "1500px" }}
         >
           <div className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl h-full flex items-center justify-center">
@@ -219,7 +238,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
               return (
                 <motion.div
                   key={proj.id}
-                  onClick={() => handleOpenProject(index)}
+                  onClick={() => handleCardClick(index)}
                   style={{
                     rotateY: rotateY,
                     x: translateX,
@@ -314,10 +333,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
           {projects.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                targetPosRef.current = i;
-                setTargetPos(i);
-              }}
+              onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                 i === activeIndex
