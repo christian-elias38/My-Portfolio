@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Mail, Phone, Calendar, RefreshCw, LogOut } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export default function AdminMessagesPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  function fetchMessages() {
+  const fetchMessages = useCallback(() => {
     setLoading(true);
     setError("");
     fetch("/api/contact")
@@ -37,7 +37,7 @@ export default function AdminMessagesPage() {
       })
       .catch(() => setError("Could not load messages"))
       .finally(() => setLoading(false));
-  }
+  }, [router]);
 
   async function logout() {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -51,7 +51,7 @@ export default function AdminMessagesPage() {
     }, 0);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [fetchMessages]);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
