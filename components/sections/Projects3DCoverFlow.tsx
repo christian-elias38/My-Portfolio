@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Check,
-  Sparkles,
   Lock,
   Code2,
   MousePointer2,
@@ -197,10 +196,10 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
           ref={containerRef}
           onMouseMove={handleMouseMove}
           onWheel={handleWheel}
-          className="relative w-full h-[620px] sm:h-[680px] md:h-[720px] flex items-center justify-center overflow-hidden py-4 select-none touch-pan-x"
-          style={{ perspective: "1300px" }}
+          className="relative w-full h-175 sm:h-190 md:h-205 flex items-center justify-center overflow-hidden py-4 select-none touch-pan-x"
+          style={{ perspective: "1500px" }}
         >
-          <div className="relative w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl h-full flex items-center justify-center">
+          <div className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl h-full flex items-center justify-center">
             {projects.map((proj, index) => {
               const offset = index - currentPos;
               const absOffset = Math.abs(offset);
@@ -208,7 +207,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
 
               // 3D Spatial transformation parameters
               const rotateY = Math.max(-38, Math.min(38, -offset * 22));
-              const translateX = offset * 420; // Expanded spacing for larger cards
+              const translateX = offset * 500; // Expanded spacing for larger cards
               const scale = Math.max(0.72, 1 - Math.min(0.28, absOffset * 0.14));
               const opacity = Math.max(0.15, 1 - Math.min(0.85, absOffset * 0.35));
               const zIndex = Math.round(50 - absOffset * 10);
@@ -235,7 +234,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                     damping: 32,
                     mass: 0.6,
                   }}
-                  className={`absolute inset-0 w-full h-[520px] sm:h-[580px] md:h-[620px] rounded-3xl cursor-pointer select-none transition-shadow duration-300 ${
+                  className={`absolute inset-0 w-full h-150 sm:h-167.5 md:h-182.5 rounded-3xl cursor-pointer select-none transition-shadow duration-300 ${
                     isActive
                       ? "bg-linear-to-b from-[#24151C]/95 via-[#1E1518]/95 to-[#1E1518]/95 border-2 border-[#E6C88A]/80 shadow-[0_25px_80px_rgba(230,200,138,0.35)] backdrop-blur-2xl"
                       : "bg-[#1E1518]/85 border border-[#504234]/50 shadow-xl backdrop-blur-md hover:border-[#E6C88A]/40"
@@ -258,12 +257,12 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
 
                   {/* Screenshot Preview Container (Large image layout) */}
                   {proj.imageUrl && (
-                    <div className="relative h-64 sm:h-72 md:h-80 w-full bg-[#150913] overflow-hidden border-b border-[#504234]/40 shrink-0">
+                    <div className="relative h-72 sm:h-80 md:h-96 w-full bg-[#150913] overflow-hidden border-b border-[#504234]/40 shrink-0">
                       <Image
                         src={proj.imageUrl}
                         alt={proj.title}
                         fill
-                        sizes="(min-width: 1024px) 800px, 100vw"
+                        sizes="(min-width: 1024px) 1024px, 100vw"
                         priority={isActive}
                         className={`transition-transform duration-500 hover:scale-103 ${
                           isMobileApp
@@ -278,13 +277,13 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                   {/* Main Card Info */}
                   <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug">
                         {proj.title}
                       </h3>
                       <p className="text-xs sm:text-sm font-semibold text-[#E6C88A] mt-1">
                         {proj.subtitle || `${proj.category || "Full-Stack"} Application`}
                       </p>
-                      <p className="text-xs sm:text-sm text-[#CFC1B5] mt-2.5 line-clamp-3 leading-relaxed">
+                      <p className="text-sm sm:text-base text-[#CFC1B5] mt-2.5 line-clamp-3 leading-relaxed">
                         {proj.description}
                       </p>
                     </div>
