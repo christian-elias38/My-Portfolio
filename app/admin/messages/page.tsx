@@ -20,11 +20,13 @@ export default function AdminMessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [errorDetail, setErrorDetail] = useState("");
   const router = useRouter();
 
   const fetchMessages = useCallback(() => {
     setLoading(true);
     setError("");
+    setErrorDetail("");
     fetch("/api/contact")
       .then(async (res) => {
         if (res.status === 401) {
@@ -33,7 +35,10 @@ export default function AdminMessagesPage() {
         }
         const data = await res.json();
         if (Array.isArray(data)) setMessages(data);
-        else setError(data?.error || "Could not load messages");
+        else {
+          setError(data?.error || "Could not load messages");
+          setErrorDetail(data?.detail || "");
+        }
       })
       .catch(() => setError("Could not load messages"))
       .finally(() => setLoading(false));
@@ -72,7 +77,14 @@ export default function AdminMessagesPage() {
         </div>
       </div>
 
-      {error && <p className="mb-4 text-sm text-red-400">{error}</p>}
+      {error && (
+        <div className="mb-4 text-sm text-red-400">
+          <p>{error}</p>
+          {errorDetail && (
+            <p className="mt-1 break-words font-mono text-xs text-red-300/80">{errorDetail}</p>
+          )}
+        </div>
+      )}
 
       {messages.length === 0 ? (
         <GlassCard className="p-8 text-center text-muted-foreground">
