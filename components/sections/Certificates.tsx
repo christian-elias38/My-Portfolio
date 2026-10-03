@@ -51,7 +51,7 @@ export function Certificates() {
               <span className="w-6 h-px bg-[#E6C88A]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
-              Certificates & <span className="text-[#E6C88A]">Honors</span>
+              Certificates & Achievements
             </h2>
           </div>
         </FadeIn>
