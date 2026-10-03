@@ -81,6 +81,28 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
     }
   };
 
+  // Scroll sideways (trackpad swipe, Shift + mouse wheel) to browse on purpose.
+  // Plain up/down scrolling is left alone so the page scrolls normally.
+  const wheelAcc = useRef(0);
+  const wheelLast = useRef(0);
+  const wheelLockUntil = useRef(0);
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey;
+    if (!horizontal) return;
+    const now = e.timeStamp;
+    if (now < wheelLockUntil.current) return;
+    if (now - wheelLast.current > 200) wheelAcc.current = 0;
+    wheelLast.current = now;
+    wheelAcc.current += e.deltaX || e.deltaY;
+    if (Math.abs(wheelAcc.current) > 40) {
+      if (wheelAcc.current > 0) handleNext();
+      else handlePrev();
+      wheelAcc.current = 0;
+      wheelLockUntil.current = now + 450;
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
@@ -181,7 +203,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         {/* Right Cursor Navigation Prompt */}
         <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-[#E6C88A]">
           <MousePointer2 className="w-3.5 h-3.5 animate-pulse text-[#E6C88A]" />
-          <span>Use arrows, drag or swipe to browse</span>
+          <span>Use arrows, drag, swipe or Shift + scroll to browse</span>
         </div>
       </div>
 
@@ -215,7 +237,8 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
           onKeyDown={handleKeyDown}
-          className="relative w-full h-175 sm:h-190 md:h-205 flex items-center justify-center overflow-hidden py-4 select-none touch-pan-y outline-none"
+          onWheel={handleWheel}
+          className="relative w-full h-175 sm:h-190 md:h-205 flex items-center justify-center overflow-hidden py-4 select-none touch-pan-y overscroll-x-contain outline-none"
           style={{ perspective: "1500px" }}
         >
           <div className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl h-full flex items-center justify-center">
