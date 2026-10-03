@@ -114,6 +114,7 @@ export async function GET() {
     return NextResponse.json(messages);
   } catch (err) {
     console.error("Failed to load messages:", err);
-    return NextResponse.json({ error: "Could not load messages" }, { status: 500 });
+    const detail = err instanceof Error ? err.message.slice(0, 400) : String(err);
+    return NextResponse.json({ error: "Could not load messages", detail }, { status: 500 });
   }
 }
