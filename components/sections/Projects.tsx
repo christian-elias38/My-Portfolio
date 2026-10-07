@@ -161,7 +161,18 @@ export async function Projects() {
     projects = await prisma.project.findMany({ orderBy: { createdAt: "desc" } });
   } catch {}
 
-  const rawProjects = projects.length > 0 ? (projects as ProjectExtra[]) : defaultProjects;
+  const rawProjects = (projects.length > 0 ? (projects as ProjectExtra[]) : defaultProjects).map(
+    (p) => {
+      if (
+        p.title.toLowerCase().includes("portfolio") ||
+        p.imageUrl === "/profile.jpg" ||
+        p.id === "proj-portfolio"
+      ) {
+        return { ...p, imageUrl: "/projects/portfolio-app.png" };
+      }
+      return p;
+    }
+  );
   // Filter out any MiniGit, Calculator, Campus Tour, or BirrFlow project
   const displayProjects = rawProjects.filter(
     (p) =>
@@ -178,7 +189,7 @@ export async function Projects() {
           <div className="text-center max-w-2xl mx-auto mb-8">
             <p className="text-[#E6C88A] uppercase font-bold tracking-widest text-xs font-mono mb-3 flex items-center justify-center gap-2">
               <span className="w-6 h-px bg-[#E6C88A]/60" />
-              SPATIAL SHOWCASE
+              PROJECT SHOWCASE
               <span className="w-6 h-px bg-[#E6C88A]/60" />
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
