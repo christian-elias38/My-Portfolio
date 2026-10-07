@@ -188,7 +188,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#E6C88A] animate-pulse" />
           <span className="font-mono font-bold text-[#F3E7D3] uppercase tracking-wider text-xs">
-            3D SPATIAL SHOWCASE
+            PROJECT SHOWCASE
           </span>
         </div>
 
@@ -196,7 +196,7 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
         <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#150913]/90 border border-[#504234]/60 text-[#F3E7D3] font-mono text-xs shadow-inner max-w-md w-full sm:w-auto">
           <Lock className="w-3.5 h-3.5 text-[#E6C88A]" />
           <span className="truncate font-semibold tracking-wide">
-            portfolio.explorer / {projects[activeIndex]?.title || "3D Spatial View"}
+            portfolio.explorer / {projects[activeIndex]?.title || "Project View"}
           </span>
         </div>
 
