@@ -16,7 +16,7 @@ import { Section } from "@/components/ui/primitives/Section";
 import { Award, ExternalLink, Maximize2 } from "lucide-react";
 import type { Certificate } from "@prisma/client";
 
-const defaultCertificates: Certificate[] = [
+const defaultCertificates: Certificate[] = [ 
   {
     id: "cert-udacity-android",
     title: "Global Chapters - Ethiopia - Android Fundamentals",
