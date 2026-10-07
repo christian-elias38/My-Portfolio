@@ -107,7 +107,7 @@ await prisma.experience.create({
         year: 2026,
         githubUrl: 'https://github.com/christian-elias38/My-Portfolio',
         liveUrl: 'https://christian-elias.vercel.app',
-        imageUrl: '/profile.jpg',
+        imageUrl: '/projects/portfolio-app.png',
         featured: true,
       },
       {
