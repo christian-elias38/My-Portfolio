@@ -9,6 +9,12 @@ type ExperienceWithExtras = ExperienceModel & {
   achievements?: string[];
 };
 
+function formatDate(date: Date | string | null | undefined): string {
+  if (!date) return "Present";
+  const d = new Date(date);
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
 export function ExperienceTimeline({ experience }: { experience: ExperienceWithExtras[] }) {
   return (
     <div className="relative pl-10 sm:pl-12">
@@ -31,7 +37,12 @@ export function ExperienceTimeline({ experience }: { experience: ExperienceWithE
               </span>
 
               <div className="rounded-2xl border border-[#504234]/70 bg-[#24151C]/80 p-6 md:p-8 hover:border-[#C99555] transition-all duration-300 shadow-[0_0_20px_rgba(201,149,85,0.1)]">
-                <h3 className="font-extrabold text-xl text-white tracking-tight">{exp.role}</h3>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <h3 className="font-extrabold text-xl text-white tracking-tight">{exp.role}</h3>
+                  <span className="text-xs font-mono text-[#E6C88A] font-semibold shrink-0">
+                    {formatDate(exp.startDate)} – {formatDate(exp.endDate)}
+                  </span>
+                </div>
                 <p className="text-sm text-[#E6C88A] font-bold mb-3">at {exp.company}</p>
                 <p className="text-sm text-[#CFC1B5] leading-relaxed font-medium mb-4">{exp.description}</p>
 
