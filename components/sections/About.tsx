@@ -29,7 +29,7 @@ export async function About() {
 
   const stats = [
     { label: "Years Coding", value: yearsCoding || 2, suffix: "+" },
-    { label: "Projects Shipped", value: projectCount || 6, suffix: "" },
+    { label: "Projects Shipped", value: projectCount || 7, suffix: "" },
     { label: "Technologies", value: skillCount || 25, suffix: "" },
     { label: "Skill Categories", value: categoryCount || 6, suffix: "" },
   ];
