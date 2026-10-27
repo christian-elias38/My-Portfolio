@@ -6,6 +6,23 @@ import type { Experience as ExperienceModel } from "@prisma/client";
 
 const defaultExperience: ExperienceModel[] = [
   {
+    id: "exp-tillacover",
+    company: "Tilla Health Insurance Trading PLC",
+    role: "Software Development Intern – Corporate Employee Benefits Dashboard",
+    description:
+      "Contributed to the development of the Corporate Employee Benefits Dashboard, a core component of the enterprise TillaCover Core Insurance Ecosystem. Built modern, responsive interfaces and workflows to streamline corporate insurance, employee benefit operations, and real-time claim management.",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "REST APIs", "Enterprise Architecture", "Git"],
+    achievements: [
+      "Engineered corporate dashboard features and intuitive workflows for employee-benefit management.",
+      "Integrated frontend components with backend REST APIs to manage and display real-time insurance & policy metrics.",
+      "Translated complex corporate business requirements into functional, responsive software features.",
+      "Collaborated in team code reviews, version control, and professional software engineering practices.",
+      "Awarded Internship Completion & Experience Certificate (Certificate No. 0000200 · Aug 14, 2026).",
+    ],
+    startDate: new Date("2026-06-15"),
+    endDate: new Date("2026-08-14"),
+  },
+  {
     id: "exp-1",
     company: "Monotype Designers / AAIT Projects",
     role: "Web Developer & Frontend Engineer",
@@ -45,7 +62,17 @@ export async function Experience() {
     experience = [];
   }
 
-  const displayExperience = experience.length > 0 ? experience : defaultExperience;
+  let displayExperience = defaultExperience;
+  if (experience.length > 0) {
+    const hasTilla = experience.some((e) =>
+      e.company.toLowerCase().includes("tilla")
+    );
+    if (!hasTilla) {
+      displayExperience = [defaultExperience[0], ...experience];
+    } else {
+      displayExperience = experience;
+    }
+  }
 
   return (
     <section id="experience" className="relative py-20 bg-transparent text-white">
