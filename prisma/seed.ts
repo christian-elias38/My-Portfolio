@@ -74,30 +74,63 @@ await prisma.education.create({
   },
 })
 
-await prisma.experience.create({
-  data: {
-    company: 'Academic & Personal Projects',
-    role: 'Full-Stack Developer',
-    description:
-      "Designed and developed multiple full-stack web and mobile applications independently and in university project teams — spanning frontend interfaces, backend APIs, and database-driven data layers, alongside a mobile app and a cybersecurity assignment.",
-    technologies: [
-      'Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma',
-      'Tailwind CSS', 'shadcn/ui', 'Cloudinary', 'Vercel', 'Flutter',
-    ],
-    achievements: [
-      'Built responsive, accessible user interfaces with Tailwind CSS and shadcn/ui across several independent and team projects.',
-      'Implemented REST APIs with request validation and structured error handling, backed by PostgreSQL and Prisma.',
-      'Integrated third-party services including Cloudinary for media storage and authentication for user accounts.',
-      'Deployed production applications on Vercel with environment-based configuration.',
-      'Contributed to a Flutter-based mobile application, building admin panel and role-based access control features.',
-      'Completed a cybersecurity assignment performing penetration testing and vulnerability analysis (XSS, SQL injection) on a test application, documenting findings with CVSS scoring and OWASP classification.',
-    ],
-    startDate: new Date('2025-01-01'),
-    endDate: null,
-  },
+await prisma.experience.createMany({
+  data: [
+    {
+      company: 'Tilla Health Insurance Trading PLC',
+      role: 'Software Development Intern – Corporate Employee Benefits Dashboard',
+      description:
+        'Contributed to the development of the Corporate Employee Benefits Dashboard, a core component of the enterprise TillaCover Core Insurance Ecosystem. Built modern, responsive interfaces and workflows to streamline corporate insurance, employee benefit operations, and real-time claim management.',
+      technologies: [
+        'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'Enterprise Architecture', 'Git',
+      ],
+      achievements: [
+        'Engineered corporate dashboard features and intuitive workflows for employee-benefit management.',
+        'Integrated frontend components with backend REST APIs to manage and display real-time insurance & policy metrics.',
+        'Translated complex corporate business requirements into functional, responsive software features.',
+        'Collaborated in team code reviews, version control, and professional software engineering practices.',
+        'Awarded Internship Completion & Experience Certificate (Certificate No. 0000200 · Aug 14, 2026).',
+      ],
+      startDate: new Date('2026-06-15'),
+      endDate: new Date('2026-08-14'),
+    },
+    {
+      company: 'Academic & Personal Projects',
+      role: 'Full-Stack Developer',
+      description:
+        "Designed and developed multiple full-stack web and mobile applications independently and in university project teams — spanning frontend interfaces, backend APIs, and database-driven data layers, alongside a mobile app and a cybersecurity assignment.",
+      technologies: [
+        'Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma',
+        'Tailwind CSS', 'shadcn/ui', 'Cloudinary', 'Vercel', 'Flutter',
+      ],
+      achievements: [
+        'Built responsive, accessible user interfaces with Tailwind CSS and shadcn/ui across several independent and team projects.',
+        'Implemented REST APIs with request validation and structured error handling, backed by PostgreSQL and Prisma.',
+        'Integrated third-party services including Cloudinary for media storage and authentication for user accounts.',
+        'Deployed production applications on Vercel with environment-based configuration.',
+        'Contributed to a Flutter-based mobile application, building admin panel and role-based access control features.',
+        'Completed a cybersecurity assignment performing penetration testing and vulnerability analysis (XSS, SQL injection) on a test application, documenting findings with CVSS scoring and OWASP classification.',
+      ],
+      startDate: new Date('2025-01-01'),
+      endDate: null,
+    },
+  ],
 })
+
   await prisma.project.createMany({
     data: [
+      {
+        title: 'TillaCover Corporate Benefits Dashboard',
+        description:
+          'Enterprise employee benefits & insurance management dashboard built for Tilla Health Insurance Trading PLC. Features real-time executive metric analytics, active policy tracking, automated claims review pipelines, and interactive benefit utilization trends for corporate teams.',
+        technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'Analytics / Charts'],
+        category: 'Enterprise Full-Stack',
+        year: 2026,
+        githubUrl: 'https://github.com/TillaCover-core/tillacover-coorporate-dashboard',
+        liveUrl: 'https://github.com/TillaCover-core/tillacover-coorporate-dashboard',
+        imageUrl: '/projects/tillacover-dashboard.png',
+        featured: true,
+      },
       {
         title: 'Dreamy Portfolio & Web Platform',
         description:
