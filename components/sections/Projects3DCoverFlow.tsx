@@ -142,6 +142,12 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
   const currentModalProject = projects[selectedIndex] || projects[0];
 
   const defaultFeaturesMap: Record<string, string[]> = {
+    "TillaCover Corporate Benefits Dashboard": [
+      "Executive overview with real-time employee benefit utilization metrics",
+      "Dynamic interactive trend analytics and insurance distribution charts",
+      "Corporate insurance plan & active policy management workflows",
+      "Streamlined claim requests, reimbursement status, and agreement tracking",
+    ],
     "Dreamy Portfolio & Web Platform": [
       "Liquid wave ambient canvas background",
       "Interactive 3D Three.js graphic canvas",
@@ -430,8 +436,9 @@ export function Projects3DCoverFlow({ projects }: { projects: ProjectExtra[] }) 
                     priority
                     className={`transition-transform duration-500 group-hover:scale-102 ${
                       currentModalProject.imageUrl.includes("car-maintenance") ||
-                      currentModalProject.imageUrl.includes("fitness-challenge")
-                        ? "object-contain p-4 bg-[#150913]"
+                      currentModalProject.imageUrl.includes("fitness-challenge") ||
+                      currentModalProject.imageUrl.includes("tillacover")
+                        ? "object-contain p-2 sm:p-4 bg-[#150913]"
                         : "object-cover object-top"
                     }`}
                   />
