@@ -14,6 +14,29 @@ export type ProjectExtra = Project & {
 
 const defaultProjects: ProjectExtra[] = [
   {
+    id: "proj-tillacover",
+    title: "TillaCover Corporate Benefits Dashboard",
+    subtitle: "Enterprise HR & Insurance Management Ecosystem",
+    projectType: "ENTERPRISE / INTERNSHIP",
+    role: "SOFTWARE DEVELOPMENT INTERN",
+    description: "Enterprise employee benefits & insurance management dashboard built for Tilla Health Insurance Trading PLC. Features real-time executive metric analytics, active policy tracking, automated claims review pipelines, and interactive benefit utilization trends for corporate teams.",
+    imageUrl: "/projects/tillacover-dashboard.png",
+    githubUrl: "https://github.com/TillaCover-core/tillacover-coorporate-dashboard",
+    liveUrl: "https://github.com/TillaCover-core/tillacover-coorporate-dashboard",
+    featured: true,
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST APIs", "Analytics / Charts"],
+    category: "Enterprise Full-Stack",
+    year: 2026,
+    features: [
+      "Executive overview with real-time employee benefit utilization metrics",
+      "Dynamic interactive trend analytics and insurance distribution charts",
+      "Corporate insurance plan & active policy management workflows",
+      "Streamlined claim requests, reimbursement status, and agreement tracking"
+    ],
+    createdAt: new Date("2026-08-15"),
+    updatedAt: new Date("2026-08-15"),
+  },
+  {
     id: "proj-portfolio",
     title: "Dreamy Portfolio & Web Platform",
     subtitle: "Modern Interactive Showcase",
@@ -33,8 +56,8 @@ const defaultProjects: ProjectExtra[] = [
       "Expandable project card details & lightbox image viewer",
       "Full stack Next.js & Prisma backend API"
     ],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: new Date("2026-07-01"),
+    updatedAt: new Date("2026-07-01"),
   },
   {
     id: "proj-car-maintenance",
@@ -161,18 +184,49 @@ export async function Projects() {
     projects = await prisma.project.findMany({ orderBy: { createdAt: "desc" } });
   } catch {}
 
-  const rawProjects = (projects.length > 0 ? (projects as ProjectExtra[]) : defaultProjects).map(
-    (p) => {
-      if (
-        p.title.toLowerCase().includes("portfolio") ||
-        p.imageUrl === "/profile.jpg" ||
-        p.id === "proj-portfolio"
-      ) {
-        return { ...p, imageUrl: "/projects/portfolio-app.png" };
-      }
-      return p;
+  let baseProjects: ProjectExtra[] = defaultProjects;
+  if (projects.length > 0) {
+    const hasTilla = projects.some(
+      (p) => p.id === "proj-tillacover" || p.title.toLowerCase().includes("tillacover")
+    );
+    const hasPortfolio = projects.some(
+      (p) => p.id === "proj-portfolio" || p.title.toLowerCase().includes("portfolio")
+    );
+
+    const dbExtras = projects as ProjectExtra[];
+    const tillaProj = hasTilla
+      ? dbExtras.find((p) => p.id === "proj-tillacover" || p.title.toLowerCase().includes("tillacover"))!
+      : defaultProjects[0];
+    const portProj = hasPortfolio
+      ? dbExtras.find((p) => p.id === "proj-portfolio" || p.title.toLowerCase().includes("portfolio"))!
+      : defaultProjects[1];
+    const others = dbExtras.filter(
+      (p) =>
+        p.id !== tillaProj.id &&
+        p.id !== portProj.id &&
+        !p.title.toLowerCase().includes("tillacover") &&
+        !p.title.toLowerCase().includes("portfolio")
+    );
+    baseProjects = [tillaProj, portProj, ...others];
+  }
+
+  const rawProjects = baseProjects.map((p) => {
+    if (
+      p.title.toLowerCase().includes("portfolio") ||
+      p.imageUrl === "/profile.jpg" ||
+      p.id === "proj-portfolio"
+    ) {
+      return { ...p, imageUrl: "/projects/portfolio-app.png" };
     }
-  );
+    if (
+      p.title.toLowerCase().includes("tillacover") ||
+      p.id === "proj-tillacover"
+    ) {
+      return { ...p, imageUrl: "/projects/tillacover-dashboard.png" };
+    }
+    return p;
+  });
+
   // Filter out any MiniGit, Calculator, Campus Tour, or BirrFlow project
   const displayProjects = rawProjects.filter(
     (p) =>
