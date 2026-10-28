@@ -200,8 +200,36 @@ await prisma.experience.createMany({
       },
     ],
   })
-  // Certificates and Blog Posts intentionally left empty per your instructions —
-  // add them via the admin dashboard once you actually have them.
+  // Certificates
+  await prisma.certificate.deleteMany()
+  await prisma.certificate.createMany({
+    data: [
+      {
+        id: 'cert-udacity-data',
+        title: 'Global Chapters - Ethiopia - Data Fundamentals',
+        issuer: 'Udacity',
+        date: new Date('2026-10-01'),
+        imageUrl: '/certificates/udacity-data-fundamentals-full.png',
+        certificateUrl: 'https://confirm.udacity.com/lp/7ba8ac4b-30fd-4315-8922-8cde13f0aad3',
+      },
+      {
+        id: 'cert-udacity-android',
+        title: 'Global Chapters - Ethiopia - Android Fundamentals',
+        issuer: 'Udacity',
+        date: new Date('2026-09-28'),
+        imageUrl: '/certificates/udacity-android-fundamentals.png',
+        certificateUrl: 'https://www.udacity.com/certificate/lp/01269edb-4613-419a-8af5-fa5fdf00a51c',
+      },
+      {
+        id: 'cert-cisco-cybersecurity',
+        title: 'Introduction to Cybersecurity',
+        issuer: 'Cisco Networking Academy',
+        date: new Date('2026-09-28'),
+        imageUrl: '/certificates/cisco-cybersecurity.png',
+        certificateUrl: 'https://www.netacad.com/launch?id=4b30f819-4173-480d-a9e8-4d07e02d7d59&tab=curriculum&view=13ca36f2-a92d-5c78-a344-5c54183065b5',
+      },
+    ],
+  })
 }
 
 main()
